@@ -10,10 +10,10 @@
     <div id = "mainMenu">
         <div id="topRectangle"></div>
         <div id="center">
-            <div><img src="images/logo.png"></div>
-            <div><a><img src="images/iDriver.png"></a></div>
-            <div><a><img src="images/iPassenger.png"></a></div>
-
+            <div class="menuBlock"><img src="images/logo.png"></div>
+            <div class="menuBlock"><a href="#"><img src="images/iDriver.png"></a></div>
+            <div class="menuBlock"><a href="#"><img src="images/iPassenger.png"></a></div>
+            <div id="information"><a href="#">О проекте</a></div>
         </div>
         <div id="bottomRectangle"></div>
     </div>

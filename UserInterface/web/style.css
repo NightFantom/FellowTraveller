@@ -27,9 +27,28 @@
 
 #center{
     background: url("images/lineRectangle.png") repeat-y;
+    height: 40%;
+}
+
+.menuBlock{
+    width: 380px;
+    margin: 0 auto 10px;
+}
+
+#information{
+    width: 380px;
+    margin: 40px auto 0;
+}
+
+#information a{
+    font-weight: bold;
+    padding:0 145px 0;
+    color:black;
+    text-decoration:none;
 }
 
 #mainMenu{
     margin: 0 auto 0;
-    padding: 150px 0 0 ;
+    padding: 150px 0 0;
+    width: 627px;
 }
