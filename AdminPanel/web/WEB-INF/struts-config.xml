@@ -4,29 +4,47 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="Logon" type="panel.FormLogon"/>
+        <form-bean name="Logon" type="panel.log.FormLogon"/>
+        <form-bean name="Empty" type="panel.emptyForm.EmptyForm"/>
+        <form-bean name="Records" type="panel.records.RecordsForm"/>
     </form-beans>
 
     <action-mappings>
         <action path="/logon"
-                type="panel.Logon"
-                scope="request"
+                type="panel.log.LogOn"
+                scope="session"
                 parameter="start"
                 name="Logon">
                 <forward name = "successful" path="/panel.jsp" />
                 <forward name = "error" path="/index.jsp" />
         </action>
-        <action path="/page"
-                type="panel.Page"
+        <action path="/getrecords"
+                type="panel.records.DispatchRecords"
                 scope="session"
-                name="Logon">
-            <forward name = "successful" path="/page.jsp" />
+                parameter="get"
+                name="Records">
+            <forward name = "newRecord" path="/newRecords.jsp" />
+            <forward name = "allRecord" path="/allRecords.jsp" />
+            <forward name = "error" path="/index.jsp" />
+        </action>
+        <action path="/panel"
+                type="panel.Page"
+                scope="request"
+                name="Empty">
+            <forward name = "successful" path="/panel.jsp" />
+            <forward name = "error" path="/index.jsp" />
+        </action>
+        <action path="/settings"
+                type="panel.Page"
+                scope="request"
+                name="Empty">
+            <forward name = "successful" path="/settings.jsp" />
             <forward name = "error" path="/index.jsp" />
         </action>
         <action path="/logout"
-                type="panel.LogOut"
-                scope="session"
-                name="Logon">
+                type="panel.log.LogOut"
+                scope="request"
+                name="Empty">
             <forward name = "successful" path="/index.jsp" />
         </action>
     </action-mappings>
