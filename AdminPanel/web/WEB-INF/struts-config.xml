@@ -1,0 +1,33 @@
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="Logon" type="panel.FormLogon"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/logon"
+                type="panel.Logon"
+                scope="request"
+                parameter="start"
+                name="Logon">
+                <forward name = "successful" path="/panel.jsp" />
+                <forward name = "error" path="/index.jsp" />
+        </action>
+        <action path="/page"
+                type="panel.Page"
+                scope="session"
+                name="Logon">
+            <forward name = "successful" path="/page.jsp" />
+            <forward name = "error" path="/index.jsp" />
+        </action>
+        <action path="/logout"
+                type="panel.LogOut"
+                scope="session"
+                name="Logon">
+            <forward name = "successful" path="/index.jsp" />
+        </action>
+    </action-mappings>
+</struts-config>

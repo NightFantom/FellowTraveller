@@ -1,0 +1,13 @@
+#Logon{
+    width: 300px;
+    height: 400px;
+    background-color: aliceblue;
+    margin: 10% 0 0 0;
+    padding: 100px 0 0 0 ;
+    font-size:20px;
+}
+#Logon input{
+    display: block;
+    margin:0 0 20px 0;
+    width: 150px;
+}
