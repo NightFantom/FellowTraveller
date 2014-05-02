@@ -1,0 +1,21 @@
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="directOn" type="RedirectOnDriverOrPassengerPage.SelectDirectActionForm"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/select"
+                type="RedirectOnDriverOrPassengerPage.SelectDirectDispatchAction"
+                parameter="get"
+                name="directOn">
+            <forward name = "driver" path="/jsp/driver.jsp" />
+            <forward name = "passenger" path="/jsp/passenger.jsp" />
+            <forward name = "error" path="/error.jsp" />
+        </action>
+
+    </action-mappings>
+</struts-config>
