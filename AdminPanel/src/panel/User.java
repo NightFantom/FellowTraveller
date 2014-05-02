@@ -1,7 +1,7 @@
 package panel;
 
 /**
- * Created by Денис on 30.04.14.
+ * Класс содержащий логин и пароль
  */
 public class User {
     private String name;
