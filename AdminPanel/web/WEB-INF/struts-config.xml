@@ -1,0 +1,51 @@
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="Logon" type="panel.log.FormLogon"/>
+        <form-bean name="Empty" type="panel.emptyForm.EmptyForm"/>
+        <form-bean name="Records" type="panel.records.RecordsForm"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/logon"
+                type="panel.log.LogOn"
+                scope="session"
+                parameter="start"
+                name="Logon">
+                <forward name = "successful" path="/panel.jsp" />
+                <forward name = "error" path="/index.jsp" />
+        </action>
+        <action path="/getrecords"
+                type="panel.records.DispatchRecords"
+                scope="session"
+                parameter="get"
+                name="Records">
+            <forward name = "newRecord" path="/newRecords.jsp" />
+            <forward name = "allRecord" path="/allRecords.jsp" />
+            <forward name = "error" path="/index.jsp" />
+        </action>
+        <action path="/panel"
+                type="panel.Page"
+                scope="request"
+                name="Empty">
+            <forward name = "successful" path="/panel.jsp" />
+            <forward name = "error" path="/index.jsp" />
+        </action>
+        <action path="/settings"
+                type="panel.Page"
+                scope="request"
+                name="Empty">
+            <forward name = "successful" path="/settings.jsp" />
+            <forward name = "error" path="/index.jsp" />
+        </action>
+        <action path="/logout"
+                type="panel.log.LogOut"
+                scope="request"
+                name="Empty">
+            <forward name = "successful" path="/index.jsp" />
+        </action>
+    </action-mappings>
+</struts-config>
