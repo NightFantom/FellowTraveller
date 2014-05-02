@@ -20,7 +20,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="MyTomcat" level="application_server_libraries" />
-    <orderEntry type="library" scope="PROVIDED" name="hibernate" level="application" />
+    <orderEntry type="library" name="hibernate" level="application" />
     <orderEntry type="library" name="struts" level="application" />
   </component>
 </module>
