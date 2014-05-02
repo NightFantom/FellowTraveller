@@ -11,9 +11,12 @@
         <div id="topRectangle"></div>
         <div id="center">
             <div class="menuBlock"><img src="images/logo.png"></div>
-            <div class="menuBlock"><a href="#"><img src="images/iDriver.png"></a></div>
-            <div class="menuBlock"><a href="#"><img src="images/iPassenger.png"></a></div>
+            <form action="${pageContext.request.contextPath}/select.do" method="post">
+                <div class="menuBlock"><a href="/jsp/driver.jsp"><img src="images/iDriver.png"></a></div>
+                <div class="menuBlock"><a href="/jsp/passenger.jsp"><img src="images/iPassenger.png"></a></div>
+            </form>
             <div id="information"><a href="#">О проекте</a></div>
+
         </div>
         <div id="bottomRectangle"></div>
     </div>
