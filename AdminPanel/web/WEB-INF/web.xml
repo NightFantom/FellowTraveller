@@ -10,12 +10,10 @@
         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
     </servlet>
 
-
     <servlet-mapping>
         <servlet-name>Action</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-   
 
     <!-- The default error page -->
     <!--<error-page>-->

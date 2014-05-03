@@ -6,5 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@include file="header.jsp"%>
-<p>Настройки</p>
+<a href="${pageContext.request.contextPath}/createTable.do">Создать таблицу</a>
+
+<p>Статус:</p>
+<p><bean:write name = "Message" property="message"/></p>
 <%@include file="footer.jsp"%>
