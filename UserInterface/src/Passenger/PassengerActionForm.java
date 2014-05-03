@@ -9,12 +9,12 @@ import org.apache.struts.action.ActionForm;
  */
 public class PassengerActionForm extends ActionForm {
 
-    private String from;
-    private String where;
-    private String when;
-    private String mail;
-    private String vkId;
-    private String comment;
+    private String from = "from";
+    private String where= "where";
+    private String when="when";
+    private String mail="mail";
+    private String vkId="vkId";
+    private String comment="comment";
 
     /**
      *
