@@ -3,18 +3,26 @@ package panel.hibernateServise;
 import org.apache.struts.action.ActionForm;
 
 /**
- * Created by Виктор on 02.05.2014.
- * Форма водителя
+ * Created by Денис on 03.05.2014.
+ * Форма пользователя
  */
 
 public class User extends ActionForm {
-
+    private Integer id;
     private String from;
     private String where;
     private String when;
     private String mail;
     private String vkId;
     private String comment;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     /**
      *
