@@ -13,6 +13,7 @@ import java.sql.Driver;
 
 /**
  * Created by Денис on 03.05.14.
+ * Класс разворачивает новую таблицу для хранения маршрутов
  */
 public class CreateTable extends BaseAction{
 
@@ -21,6 +22,15 @@ public class CreateTable extends BaseAction{
     private static final String PASSWORD = "";
     private static final String FORWARD_SETTINGS = "settings";
 
+    /**
+     * Метод отправляет запрос на создание таблицы
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
