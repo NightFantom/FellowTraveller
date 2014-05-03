@@ -11,10 +11,9 @@
     </form-beans>
 
     <action-mappings>
-
         <action path="/createTable"
                 type="panel.settings.CreateTable"
-                scope="session"
+                scope="request"
                 parameter="start"
                 name="Message">
             <forward name = "settings" path="/settings.jsp" />
