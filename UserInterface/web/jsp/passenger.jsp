@@ -55,7 +55,7 @@
 
             }
 
-            req.open('get', '/passengerform.do', true);
+            req.open('get', '/userinterface//passengerform.do', true);
            // req.onreadystatechange = updatePage;
             req.send(null);
             statusElem.innerHTML = 'Ожидаю ответа сервера...'
