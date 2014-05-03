@@ -7,9 +7,18 @@
         <form-bean name="Logon" type="panel.log.FormLogon"/>
         <form-bean name="Empty" type="panel.emptyForm.EmptyForm"/>
         <form-bean name="Records" type="panel.records.RecordsForm"/>
+        <form-bean name="Message" type="panel.settings.MessageForm"/>
     </form-beans>
 
     <action-mappings>
+
+        <action path="/createTable"
+                type="panel.settings.CreateTable"
+                scope="session"
+                parameter="start"
+                name="Message">
+            <forward name = "settings" path="/settings.jsp" />
+        </action>
         <action path="/logon"
                 type="panel.log.LogOn"
                 scope="session"
@@ -37,7 +46,7 @@
         <action path="/settings"
                 type="panel.Page"
                 scope="request"
-                name="Empty">
+                name="Message">
             <forward name = "successful" path="/settings.jsp" />
             <forward name = "error" path="/index.jsp" />
         </action>
