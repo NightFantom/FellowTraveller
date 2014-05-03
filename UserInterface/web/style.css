@@ -5,6 +5,10 @@
     font-family: Tahoma;
 }
 
+a{
+    text-decoration:none;
+}
+
 #basis{
     width: 1200px;
     height: 1000px;
@@ -27,7 +31,7 @@
 
 #center{
     background: url("images/lineRectangle.png") repeat-y;
-    height: 40%;
+
 }
 
 .menuBlock{
@@ -35,12 +39,12 @@
     margin: 0 auto 10px;
 }
 
-#information{
+.information{
     width: 380px;
     margin: 40px auto 0;
 }
 
-#information a{
+.information a{
     font-weight: bold;
     padding:0 145px 0;
     color:black;
@@ -51,4 +55,41 @@
     margin: 0 auto 0;
     padding: 150px 0 0;
     width: 627px;
+}
+
+.form p{
+    color:#235f8a;
+    font-size:18pt;
+    margin:0 0 10px;
+}
+
+.form{
+    width:70%;
+    margin: 0 0 0 40px;
+    text-align: right;
+}
+
+.textInput{
+    width:240px;
+    font-size:18pt;
+    border-radius: 5px;
+    border-right: #d2d2d2 2px solid;
+    border-bottom: #d2d2d2 2px solid;
+}
+
+.form textarea{
+    width:240px;
+    border-radius: 5px;
+    border-right: #d2d2d2 2px solid;
+    border-bottom: #d2d2d2 2px solid;
+}
+
+.agreement a{
+    font-size:10pt;
+    color:black;
+    margin:0 20px 0 0;
+}
+
+#data{
+
 }
