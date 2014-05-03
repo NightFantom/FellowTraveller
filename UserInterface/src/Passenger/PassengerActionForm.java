@@ -1,4 +1,4 @@
-package Passenger;
+package passenger;
 
 import org.apache.struts.action.ActionForm;
 

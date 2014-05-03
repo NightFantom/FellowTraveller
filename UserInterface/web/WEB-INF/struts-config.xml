@@ -4,18 +4,34 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="directOn" type="RedirectOnDriverOrPassengerPage.SelectDirectActionForm"/>
+        <form-bean name="directOn" type="redirectOnDriverOrPassengerPage.SelectDirectActionForm"/>
+        <form-bean name="driver" type="driver.DriverActionForm"/>
+        <form-bean name="passenger" type="passenger.PassengerActionForm"/>
     </form-beans>
 
     <action-mappings>
         <action path="/select"
-                type="RedirectOnDriverOrPassengerPage.SelectDirectDispatchAction"
+                type="redirectOnDriverOrPassengerPage.SelectDirectDispatchAction"
                 parameter="get"
                 name="directOn">
             <forward name = "driver" path="/jsp/driver.jsp" />
             <forward name = "passenger" path="/jsp/passenger.jsp" />
             <forward name = "error" path="/error.jsp" />
         </action>
+        <action path="/driverform"
+                type="driver.DriverDispatchAction"
+                name="driver"
+                scope="request">
+            <forward name = "success" path="/jsp/setRoute.jsp" />
+            <forward name = "error" path="/error.jsp" />
+        </action>
+        <action path="/passengerform"
+                type="passenger.PassengerDispatchAction"
+                name="passenger"
+                scope="request">
+            <forward name = "success" path="/jsp/getRoutes.jsp" />
+            <forward name = "error" path="/error.jsp" />
+        </action>
+       </action-mappings>
 
-    </action-mappings>
 </struts-config>
