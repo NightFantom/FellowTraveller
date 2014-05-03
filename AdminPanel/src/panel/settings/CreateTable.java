@@ -45,7 +45,7 @@ public class CreateTable extends BaseAction{
         try {
             connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
             String send = "CREATE TABLE `route`  ( \n" +
-                    "\t`id`     \tint(11) NOT NULL,\n" +
+                    "\t`id`     \tint(11) NOT NULL AUTO_INCREMENT,\n" +
                     "\t`from`   \tvarchar(25) NOT NULL,\n" +
                     "\t`where`  \tvarchar(25) NOT NULL,\n" +
                     "\t`when`   \tvarchar(25) NULL,\n" +
