@@ -1,4 +1,4 @@
-package RedirectOnDriverOrPassengerPage;
+package redirectOnDriverOrPassengerPage;
 
 
 import org.apache.struts.action.ActionForm;
