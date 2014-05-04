@@ -11,10 +11,27 @@ public class User extends ActionForm {
     private Integer id;
     private String from;
     private String where;
-    private String when;
+    private Integer day;
+    private Integer month;
     private String mail;
     private String vkId;
     private String comment;
+
+    public Integer getDay() {
+        return day;
+    }
+
+    public void setDay(Integer day) {
+        this.day = day;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
+    }
 
     public Integer getId() {
         return id;
@@ -54,22 +71,6 @@ public class User extends ActionForm {
      */
     public void setWhere(String where) {
         this.where = where;
-    }
-
-    /**
-     *
-     * @return Когда
-     */
-    public String getWhen() {
-        return when;
-    }
-
-    /**
-     *
-     * @param when Когда
-     */
-    public void setWhen(String when) {
-        this.when = when;
     }
 
     /**
