@@ -31,7 +31,7 @@
                 scope="session"
                 parameter="get"
                 name="Records">
-            <forward name = "allRecord" path="/records.jsp" />
+            <forward name = "listRecord" path="/records/listRecords.jsp" />
             <forward name = "error" path="/index.jsp" />
         </action>
         <action path="/panel"
@@ -53,6 +53,13 @@
                 scope="request"
                 name="Empty">
             <forward name = "successful" path="/index.jsp" />
+        </action>
+        <action path="/records"
+                type="panel.Page"
+                scope="request"
+                name="Empty">
+            <forward name = "successful" path="/records.jsp" />
+            <forward name = "error" path="/index.jsp" />
         </action>
 
 
