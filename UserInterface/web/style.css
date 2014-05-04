@@ -93,3 +93,11 @@ a{
 #data{
 
 }
+
+.date{
+    width:116px;
+    font-size:18pt;
+    border-radius: 5px;
+    border-right: #d2d2d2 2px solid;
+    border-bottom: #d2d2d2 2px solid;
+}
