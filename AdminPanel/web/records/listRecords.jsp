@@ -1,13 +1,13 @@
 ﻿<%@ taglib uri="http://struts.apache.org/tags-logic" prefix ="logic"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<table>
-    <tr>
-        <td>Откуда </td>
-        <td>Куда</td>
-        <td>День</td>
-        <td>Месяц</td>
-        <td>Страница ВКонтакте </td>
-        <td>Комментарий</td>
+<table class="tableRecords" c>
+    <tr class="tableHeader">
+        <td class="place">Откуда </td>
+        <td class="place">Куда</td>
+        <td class="date">День</td>
+        <td class="date">Месяц</td>
+        <td class="date">Страница ВКонтакте </td>
+        <td class="comment">Комментарий</td>
     </tr>
 
     <logic:iterate id="user" name="Records" property="users">
@@ -16,7 +16,7 @@
             <td><bean:write name="user" property="where"/> </td>
             <td><bean:write name="user" property="day" format=""/> </td>
             <td><bean:write name="user" property="month" format=""/> </td>
-            <td><bean:write name="user" property="vkId"/> </td>
+            <td><a href="<bean:write name="user" property="vkId"/>"> VK</a></td>
             <td><bean:write name="user" property="comment"/> </td>
         </tr>
     </logic:iterate>
