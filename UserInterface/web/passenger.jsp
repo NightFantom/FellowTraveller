@@ -72,7 +72,18 @@
 
                     <p>Куда <input class="textInput" type="text" name="where"></p>
 
-                    <p>Когда <input class="textInput" type="text" name="when"></p>
+                    <p>Когда
+                        <select class ="date" name = "day">
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                        </select>
+                        <select class ="date" name = "month">
+                            <option value = "1">Янв</option>
+                            <option value = "2">Фев</option>
+                            <option value = "3">Март</option>
+                        </select>
+                    </p>
 
                     <p>E-mail <input class="textInput" type="text" name="mail"></p>
 

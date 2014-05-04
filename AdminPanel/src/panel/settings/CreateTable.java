@@ -48,10 +48,12 @@ public class CreateTable extends BaseAction{
                     "\t`id`     \tint(11) NOT NULL AUTO_INCREMENT,\n" +
                     "\t`from`   \tvarchar(25) NOT NULL,\n" +
                     "\t`where`  \tvarchar(25) NOT NULL,\n" +
-                    "\t`when`   \tvarchar(25) NULL,\n" +
+                    "\t`day` integer(11) NOT NULL,\n" +
+                    "\t`month` integer(11) NOT NULL,\n"+
                     "\t`mail`   \tvarchar(25) NOT NULL,\n" +
                     "\t`vkId`   \tvarchar(25) NOT NULL,\n" +
-                    "\t`comment`\tvarchar(25) NULL,\n" +
+                    "\t`comment`\tvarchar(100) NULL,\n" +
+                    "\t`time`\ttimestamp NOT NULL,\n "+
                     "\tPRIMARY KEY(`id`)\n" +
                     ")\n" +
                     "ENGINE = MyISAM\n" +

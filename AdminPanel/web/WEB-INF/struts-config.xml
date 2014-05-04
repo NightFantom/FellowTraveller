@@ -31,8 +31,7 @@
                 scope="session"
                 parameter="get"
                 name="Records">
-            <forward name = "newRecord" path="/newRecords.jsp" />
-            <forward name = "allRecord" path="/allRecords.jsp" />
+            <forward name = "allRecord" path="/records.jsp" />
             <forward name = "error" path="/index.jsp" />
         </action>
         <action path="/panel"
@@ -55,5 +54,7 @@
                 name="Empty">
             <forward name = "successful" path="/index.jsp" />
         </action>
+
+
     </action-mappings>
 </struts-config>

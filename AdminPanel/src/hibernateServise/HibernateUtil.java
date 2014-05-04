@@ -1,4 +1,4 @@
-package panel.hibernateServise;
+package hibernateServise;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

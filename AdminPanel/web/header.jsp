@@ -15,7 +15,7 @@
         <table>
             <tr>
                 <td><a href="${pageContext.request.contextPath}/getrecords.do?get=allRecords">Просмотр записей</a></td>
-                <td><a href="${pageContext.request.contextPath}/getrecords.do?get=newRecords">Новые записи</a></td>
+                <td><a href="${pageContext.request.contextPath}/getrecords.do?get=specificRecords">Новые записи</a></td>
                 <td><a href="${pageContext.request.contextPath}/settings.do">Настройки</a></td>
                 <td><a href="${pageContext.request.contextPath}/logout.do">Выход</a></td>
             </tr>
