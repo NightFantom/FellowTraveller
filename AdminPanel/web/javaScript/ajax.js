@@ -22,9 +22,15 @@ function getXmlHttp() {
 function updatePage() {
 
 }
-function getDrivers() {
+/**
+ *
+ * @param path  URL запроса
+ * @param method Метод запроса (Get или Post)
+ * @param id ID блока, куда будет подгружаться страница
+ */
+function getDrivers(path, method, id) {
     var req = getXmlHttp();
-    var statusElem = document.getElementById('data');
+    var statusElem = document.getElementById(id);
     req.onreadystatechange = function () {
         // onreadystatechange активируется при получении ответа сервера
         if (req.readyState == 4) {
@@ -41,7 +47,7 @@ function getDrivers() {
 
     }
 
-    req.open('get', '/adminpanel/getrecords.do?get=allRecords', true);
+    req.open(method, path, true);
     // req.onreadystatechange = updatePage;
     req.send(null);
     statusElem.innerHTML = 'Ожидаю ответа сервера...'
