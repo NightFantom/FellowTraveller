@@ -1,7 +1,7 @@
 package panel.records;
 
 import org.apache.struts.action.ActionForm;
-import panel.hibernateServise.User;
+import hibernateServise.User;
 
 import java.util.List;
 
