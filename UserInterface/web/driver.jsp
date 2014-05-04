@@ -19,14 +19,14 @@
 
                     <p>Когда
                         <select class ="date" name = "day">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
                         </select>
-                        <select class ="date" name = "mouth">
-                            <option>Янв</option>
-                            <option>Фев</option>
-                            <option>Март</option>
+                        <select class ="date" name = "month">
+                            <option value = "1">Янв</option>
+                            <option value = "2">Фев</option>
+                            <option value = "3">Март</option>
                         </select>
                     </p>
 
