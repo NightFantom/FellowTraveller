@@ -1,18 +1,23 @@
-﻿<%-- Created by Денис --%>
+﻿<%--
+  Created by IntelliJ IDEA.
+  User: Денис
+  Date: 07.05.2014
+  Time: 16:21
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
 <head>
-    <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
+    <%@include file="DriverAndPassengerPage/header.jsp"%>
     <title>Я водитель</title>
+
 </head>
 <body>
 <div id="basis">
     <div id="mainMenu">
         <div id="topRectangle"></div>
         <div id="center">
-            <div class="menuBlock"><img src="images/logo.png"></div>
+            <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
             <div class="form">
-                <form action="${pageContext.request.contextPath}/" method="post">
+                <form action="${pageContext.request.contextPath}/save.do" method="post">
                     <p>Откуда <input class="textInput" type="text" name="from"></p>
 
                     <p>Куда <input class="textInput" type="text" name="where"></p>
@@ -38,9 +43,11 @@
 
                     <p class="agreement"><input type="checkbox" name="agree"> <a href="#">Принимаю условия
                         соглашения</a></p>
+                    <%--<input type="button" class="textInput" value="Поехали" onclick="getDrivers('${pageContext.request.contextPath}/save.do', 'post','data')">--%>
                     <input type="submit" class="textInput" value="Поехали">
                 </form>
                 <div id="data">
+
                 </div>
                 <div class="information"><a href="#">О проекте</a></div>
             </div>
