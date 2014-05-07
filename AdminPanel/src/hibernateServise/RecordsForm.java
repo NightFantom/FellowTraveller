@@ -1,7 +1,7 @@
-package records;
+package hibernateServise;
 
-import hibernateServise.User;
 import org.apache.struts.action.ActionForm;
+import hibernateServise.User;
 
 import java.util.List;
 
