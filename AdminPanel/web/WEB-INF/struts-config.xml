@@ -6,7 +6,7 @@
     <form-beans>
         <form-bean name="Logon" type="panel.log.FormLogon"/>
         <form-bean name="Empty" type="panel.emptyForm.EmptyForm"/>
-        <form-bean name="Records" type="panel.records.RecordsForm"/>
+        <form-bean name="Records" type="hibernateServise.RecordsForm"/>
         <form-bean name="Message" type="panel.settings.MessageForm"/>
     </form-beans>
 
