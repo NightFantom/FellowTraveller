@@ -6,10 +6,10 @@
 <hibernate-mapping>
     <class name="hibernateServise.User" table="route">
         <id column="id" name="id" type="integer">
-            <generator class="increment"/>
+            <generator class="native"/>
         </id>
-        <property column="from" name="from" type="string"/>
-        <property column="where" name="where" type="string"/>
+        <property column="`from`" name="from" type="string"/>
+        <property column="`where`" name="where" type="string"/>
         <property column="day" name="day" type="integer"/>
         <property column="month" name="month" type="integer"/>
         <property column="mail" name="mail" type="string"/>

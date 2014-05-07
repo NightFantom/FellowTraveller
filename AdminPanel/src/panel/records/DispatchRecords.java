@@ -1,5 +1,6 @@
 package panel.records;
 
+import hibernateServise.RecordsForm;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -14,7 +15,6 @@ import hibernateServise.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.beans.Expression;
 import java.util.List;
 
 /**
@@ -22,7 +22,8 @@ import java.util.List;
  */
 public class DispatchRecords extends DispatchAction {
     public static final String FORWARD_NEW_RECORDS = "newRecord";
-    public static final String FORWARD_ALL_RECORDS = "allRecord";
+    public static final String FORWARD_LIST_RECORDS = "listRecord";
+    public static final String FORWARD_SAVE_RECORD = "saveRecord";
     public static final String FORWARD_ERROR = "error";
 
 
@@ -68,13 +69,33 @@ public class DispatchRecords extends DispatchAction {
             }finally {
                 hibernateUtil.close();
             }
-            return mapping.findForward(FORWARD_ALL_RECORDS);
+            return mapping.findForward(FORWARD_LIST_RECORDS);
         }else {
             return mapping.findForward(FORWARD_ERROR);
         }
     }
 
-    public ActionForward specificRecords (ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ActionForward saveRecords (ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        if (CheckUser.logon(request)){
+            User user = (User) form;
+            HibernateUtil hibernateUtil = new HibernateUtil();
+            try {
+                Session session = hibernateUtil.currentSession();
+                Transaction transaction = session.beginTransaction();
+                session.save(user);
+                session.getTransaction().commit();
+            }catch (Exception e){
+                throw e;
+            }finally {
+                hibernateUtil.close();
+            }
+            return mapping.findForward(FORWARD_SAVE_RECORD);
+        }else {
+            return mapping.findForward(FORWARD_ERROR);
+        }
+    }
+
+    public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (CheckUser.logon(request)){
             RecordsForm routesForm = (RecordsForm) form;
             User user = routesForm.getUser();
@@ -82,8 +103,19 @@ public class DispatchRecords extends DispatchAction {
             try {
                 Session session = hibernateUtil.currentSession();
                 Criteria criteria =  session.createCriteria(User.class);
-                criteria.add(Restrictions.like("from",user.getFrom()));
-                criteria.add(Restrictions.like("where",user.getWhere()));
+                if (user.getFrom() != null){
+                    criteria.add(Restrictions.like("from",user.getFrom()));
+                }
+                if (user.getWhere() != null){
+                    criteria.add(Restrictions.like("where",user.getWhere()));
+                }
+                if (user.getDay() != null){
+                    criteria.add(Restrictions.like("day",user.getDay()));
+                }
+                if (user.getMonth() != null){
+                    criteria.add(Restrictions.like("month",user.getMonth()));
+                }
+
                 List<User> list = criteria.list();
                 routesForm.setUsers(list);
             }catch (Exception e){
@@ -91,7 +123,7 @@ public class DispatchRecords extends DispatchAction {
             }finally {
                 hibernateUtil.close();
             }
-            return mapping.findForward(FORWARD_ALL_RECORDS);
+            return mapping.findForward(FORWARD_LIST_RECORDS);
         }else {
             return mapping.findForward(FORWARD_ERROR);
         }

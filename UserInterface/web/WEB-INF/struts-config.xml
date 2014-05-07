@@ -1,4 +1,4 @@
-<!DOCTYPE struts-config PUBLIC
+﻿<!DOCTYPE struts-config PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
         "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 
@@ -6,22 +6,32 @@
     <form-beans>
         <form-bean name="driver" type="driver.DriverActionForm"/>
         <form-bean name="passenger" type="passenger.PassengerActionForm"/>
+        <form-bean name="Record" type="hibernateServise.User"/>
     </form-beans>
 
     <action-mappings>
         <action path="/driverform"
                 type="driver.DriverDispatchAction"
                 name="driver"
+                parameter="start"
                 scope="request">
-            <forward name = "success" path="/jsp/setRoute.jsp" />
-            <forward name = "error" path="/error.jsp" />
+            <forward name="success" path="/jsp/setRoute.jsp"/>
+            <forward name="error" path="/error.jsp"/>
         </action>
         <action path="/passengerform"
                 type="passenger.PassengerDispatchAction"
                 name="passenger"
+                parameter="start"
                 scope="request">
-            <forward name = "success" path="/jsp/getRoutes.jsp" />
-            <forward name = "error" path="/error.jsp" />
+            <forward name="success" path="/jsp/getRoutes.jsp"/>
+            <forward name="error" path="/error.jsp"/>
         </action>
-       </action-mappings>
+        <action path="/save"
+                type="records.DispatchRecords"
+                name="Record"
+                parameter="saveRecords"
+                scope="request">
+            <forward name="successful" path="passenger.jsp"/>
+        </action>
+    </action-mappings>
 </struts-config>
