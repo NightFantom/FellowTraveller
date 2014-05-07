@@ -93,7 +93,7 @@
 
                     <p class="agreement"><input type="checkbox" name="agree"> <a href="#">Принимаю условия
                         соглашения</a></p>
-                    <input type="submit" class="textInput" value="Поехали">
+                    <input type="button" onclick="updatePage()" class="textInput" value="Поехали">
                 </form>
                 <div id="data">
 
