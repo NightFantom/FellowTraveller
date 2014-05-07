@@ -51,7 +51,7 @@ public class CreateTable extends BaseAction{
                     "\t`day` integer(11) NOT NULL,\n" +
                     "\t`month` integer(11) NOT NULL,\n"+
                     "\t`mail`   \tvarchar(25) NOT NULL,\n" +
-                    "\t`vkId`   \tvarchar(25) NOT NULL,\n" +
+                    "\t`vkId`   \tvarchar(50) NOT NULL,\n" +
                     "\t`comment`\tvarchar(100) NULL,\n" +
                     "\t`time`\ttimestamp NOT NULL,\n "+
                     "\tPRIMARY KEY(`id`)\n" +
