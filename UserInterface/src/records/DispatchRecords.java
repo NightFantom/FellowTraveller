@@ -1,6 +1,7 @@
 package records;
 
 import hibernateServise.HibernateUtil;
+import hibernateServise.RecordsForm;
 import hibernateServise.User;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;

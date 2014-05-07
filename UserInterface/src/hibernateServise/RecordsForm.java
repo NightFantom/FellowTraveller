@@ -1,6 +1,5 @@
 package hibernateServise;
 
-import hibernateServise.User;
 import org.apache.struts.action.ActionForm;
 
 import java.util.List;
