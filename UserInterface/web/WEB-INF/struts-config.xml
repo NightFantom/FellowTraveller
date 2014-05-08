@@ -31,7 +31,7 @@
                 name="Record"
                 parameter="saveRecords"
                 scope="request">
-            <forward name="successful" path="passenger.jsp"/>
+            <forward name="successful" path="/jsp/setRoute.jsp"/>
         </action>
     </action-mappings>
 </struts-config>

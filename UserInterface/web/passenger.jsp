@@ -44,8 +44,12 @@
 
                     <p class="agreement"><input type="checkbox" name="agree"> <a href="#">Принимаю условия
                         соглашения</a></p>
+<<<<<<< HEAD
+                    <input type="button" onclick="updatePage()" class="textInput" value="Поехали">
+=======
                     <%--<input type="button" class="textInput" value="Поехали" onclick="getDrivers('${pageContext.request.contextPath}/save.do', 'post','data')">--%>
                     <input type="submit" class="textInput" value="Поехали">
+>>>>>>> FellowTraveler/master
                 </form>
                 <div id="data">
 

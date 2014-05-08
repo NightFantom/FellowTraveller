@@ -1,8 +1,9 @@
 /**
- * Created by Денис on 04.05.14.
+ * @created Виктор
+ * @returns {*}
  */
 
-function getXmlHttp() {
+function createXMLHttp() {  //getXmlHttp
     var xmlhttp;
     try {
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -18,38 +19,85 @@ function getXmlHttp() {
     }
     return xmlhttp;
 }
+//
+//
+///**
+// *
+// * @param path  URL запроса
+// * @param id ID блока, куда будет подгружаться страница
+// */
+//function updatePage(path, id) {
+//    var req = getXmlHttp();
+//    var statusElem = document.getElementById(id);
+//    req.onreadystatechange = function () { // onreadystatechange активируется при получении ответа сервера
+//
+//        if (req.readyState == 4) {  // если запрос закончил выполняться
+//             statusElem.innerHTML = req.statusText // показать статус (Not Found, ОК..)
+//
+//            if (req.status == 200) { // если статус 200 (ОК) - выдать ответ пользователю
+//
+//                statusElem.innerHTML = req.responseText;
+//            }
+//
+//        }
+//
+//    }
+//
+//    req.open("GET", path, true);
+//    // req.onreadystatechange = updatePage;
+//    req.send();
+//    statusElem.innerHTML = 'Ожидаю ответа сервера...'
+//}
+//function createXMLHttp(){
+//    if	(typeof XMLHttpRequest != "undefined") { // для браузеров аля Mozilla
+//        return new XMLHttpRequest();
+//    } else if (window.ActiveXObject) { // для Internet Explorer (all versions)
+//        var aVersions = [
+//            "MSXML2.XMLHttp.5.0",
+//            "MSXML2.XMLHttp.4.0",
+//            "MSXML2.XMLHttp.3.0",
+//            "MSXML2.XMLHttp",
+//            "Microsoft.XMLHttp"
+//        ];
+//        for (var i = 0; i < aVersions.length; i++) {
+//            try {
+//                var oXmlHttp = new ActiveXObject(aVersions[i]);
+//                return oXmlHttp;
+//            } catch (oError) {}
+//        } throw new Error("Невозможно создать объект XMLHttp.");
+//    }}
 
-function updatePage() {
-
-}
-/**
- *
- * @param path  URL запроса
- * @param method Метод запроса (Get или Post)
- * @param id ID блока, куда будет подгружаться страница
- */
-function getDrivers(path, method, id) {
-    var req = getXmlHttp();
-    var statusElem = document.getElementById(id);
-    req.onreadystatechange = function () {
-        // onreadystatechange активируется при получении ответа сервера
-        if (req.readyState == 4) {
-            // если запрос закончил выполняться
-
-            statusElem.innerHTML = req.statusText // показать статус (Not Found, ОК..)
-
-            if (req.status == 200) {
-                // если статус 200 (ОК) - выдать ответ пользователю
-                statusElem.innerHTML = req.responseText;
-            }
-            // тут можно добавить else с обработкой ошибок запроса
-        }
-
+// фукнция Автоматической упаковки формы любой сложности
+function getRequestBody(oForm) {
+    var aParams = new Array();
+    for(var i = 0; i < oForm.elements.length; i++) {
+        var sParam = encodeURIComponent(oForm.elements[i].name);
+        sParam += "=";
+        sParam += encodeURIComponent(oForm.elements[i].value);
+        aParams.push(sParam);
     }
-
-    req.open(method, path, true);
-    // req.onreadystatechange = updatePage;
-    req.send(null);
-    statusElem.innerHTML = 'Ожидаю ответа сервера...'
+    return aParams.join("&");
 }
+//function showResult(d) {
+//    document.getElementById(id).innerHTML=d;
+//}
+
+function postAjax(url,oForm,callback) { // функция Ajax POST
+    var oXmlHttp = createXMLHttp();
+    var sBody = getRequestBody(oForm);
+
+    oXmlHttp.open("POST",url,true);
+    oXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    oXmlHttp.onreadystatechange = function() {
+        if(oXmlHttp.readyState == 4) {
+            if(oXmlHttp.status == 200) {
+                callback(oXmlHttp.responseText);
+            } else {
+                callback('error'+oXmlHttp.statusText);
+            }
+        }
+    };
+    oXmlHttp.send(sBody);
+}
+
 
