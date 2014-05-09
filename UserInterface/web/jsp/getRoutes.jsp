@@ -1,5 +1,6 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix ="logic"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <table class="tableRecords" c>
     <tr class="tableHeader">
         <td class="place">Откуда </td>
