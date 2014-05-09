@@ -18,7 +18,7 @@
         <div id="center">
             <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
             <div class="form">
-                <form action="${pageContext.request.contextPath}/save.do" method="post">
+                <form>
                     <p>Откуда <input class="textInput" type="text" name="from"></p>
 
                     <p>Куда <input class="textInput" type="text" name="where"></p>
@@ -44,16 +44,9 @@
 
                     <p class="agreement"><input type="checkbox" name="agree"> <a href="#">Принимаю условия
                         соглашения</a></p>
-<<<<<<< HEAD
-                    <input type="button" onclick="updatePage()" class="textInput" value="Поехали">
-=======
-                    <%--<input type="button" class="textInput" value="Поехали" onclick="getDrivers('${pageContext.request.contextPath}/save.do', 'post','data')">--%>
-                    <input type="submit" class="textInput" value="Поехали">
->>>>>>> FellowTraveler/master
+                    <input type="button" class="textInput" value="Поехали" onclick="postAjax('${pageContext.request.contextPath}/getRecords.do',document.forms[0],'showServerAnswer')">
+                    <div id="showServerAnswer"></div>
                 </form>
-                <div id="data">
-
-                </div>
                 <div class="information"><a href="#">О проекте</a></div>
             </div>
         </div>

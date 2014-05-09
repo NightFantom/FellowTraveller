@@ -8,23 +8,7 @@
 <head>
     <%@include file="DriverAndPassengerPage/header.jsp"%>
     <script type="text/javascript" src="javaScript/ajax.js"></script>
-    <script>
-       function time(){
-           document.getElementById('displayText').innerHTML="<p>Данные отправлены</p>";
-       }
-        function showResult(d) {
-
-            setTimeout(time , 3000);
-            document.getElementById('displayText').innerHTML="";
-
-        }
-
-        function do_post_ajax() {
-            postAjax('${pageContext.request.contextPath}/save.do',document.forms[0], showResult);
-        }
-    </script>
     <title>Я водитель</title>
-
 </head>
 <body>
 <div id="basis">
@@ -96,14 +80,9 @@
 
                     <p class="agreement"><input type="checkbox" name="agree"> <a href="#">Принимаю условия
                         соглашения</a></p>
-                    <%--<input type="button" class="textInput" value="Поехали" onclick="getDrivers('${pageContext.request.contextPath}/save.do', 'post','data')">--%>
-                   <input type="button" class="textInput" value="Поехали" onclick="do_post_ajax()">
-                    <div id="displayText"></div>
+                    <input type="button" class="textInput" value="Поехали" onclick="postAjax('${pageContext.request.contextPath}/save.do',document.forms[0],'showServerAnswer')">
+                    <div id="showServerAnswer"></div>
                 </form>
-<%--   <a href="JavaScript:do_post_ajax()">проверить POST</a><p>--%>
-  <div id="data">
-
-  </div>
   <div class="information"><a href="#">О проекте</a></div>
 </div>
 </div>

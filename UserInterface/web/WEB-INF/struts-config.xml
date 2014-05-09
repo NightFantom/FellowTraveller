@@ -30,7 +30,7 @@
         <action path="/save"
                 type="records.DispatchRecords"
                 name="Record"
-                parameter="save"
+                parameter="saveRecords"
                 scope="request">
             <forward name="successful" path="/jsp/setRoute.jsp"/>
         </action>
