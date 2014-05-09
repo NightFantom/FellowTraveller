@@ -82,7 +82,7 @@ function getRequestBody(oForm) {
 //    document.getElementById(id).innerHTML=d;
 //}
 
-function postAjax(url,oForm,callback) { // функция Ajax POST
+function postAjax(url,oForm,id) { // функция Ajax POST
     var oXmlHttp = createXMLHttp();
     var sBody = getRequestBody(oForm);
 
@@ -91,9 +91,9 @@ function postAjax(url,oForm,callback) { // функция Ajax POST
     oXmlHttp.onreadystatechange = function() {
         if(oXmlHttp.readyState == 4) {
             if(oXmlHttp.status == 200) {
-                callback(oXmlHttp.responseText);
+                document.getElementById(id).innerHTML=oXmlHttp.responseText;
             } else {
-                callback('error'+oXmlHttp.statusText);
+                document.getElementById(id).innerHTML="error";
             }
         }
     };
