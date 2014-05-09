@@ -80,13 +80,9 @@
 
                     <p class="agreement"><input type="checkbox" name="agree"> <a href="#">Принимаю условия
                         соглашения</a></p>
-                    <%--<input type="button" class="textInput" value="Поехали" onclick="getDrivers('${pageContext.request.contextPath}/save.do', 'post','data')">--%>
-                   <input type="button" class="textInput" value="Поехали" onclick="postAjax('${pageContext.request.contextPath}/save.do',document.forms[0],'showServerAnswer')">
+                    <input type="button" class="textInput" value="Поехали" onclick="postAjax('${pageContext.request.contextPath}/save.do',document.forms[0],'showServerAnswer')">
                     <div id="showServerAnswer"></div>
                 </form>
-  <div id="data">
-
-  </div>
   <div class="information"><a href="#">О проекте</a></div>
 </div>
 </div>
