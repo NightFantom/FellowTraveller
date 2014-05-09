@@ -20,8 +20,8 @@ import java.util.List;
  */
 public class DispatchRecords extends DispatchAction {
 
-    public static final String FORWARD_LIST_RECORDS = "listRecord";
-    public static final String FORWARD_SAVE_RECORD = "saveRecord";
+    public static final String FORWARD_LIST_RECORDS = "successful";
+    public static final String FORWARD_SAVE_RECORD = "successful";
 
     @Override
     protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
