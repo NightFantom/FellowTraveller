@@ -36,7 +36,7 @@
         </action>
         <action path="/getRecords"
                 type="records.DispatchRecords"
-                name="Record"
+                name="Records"
                 parameter="getSpecificRecords"
                 scope="request">
             <forward name="successful" path="/jsp/getRoutes.jsp"/>
