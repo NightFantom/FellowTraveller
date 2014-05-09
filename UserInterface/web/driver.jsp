@@ -7,7 +7,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
     <%@include file="DriverAndPassengerPage/header.jsp"%>
-    <script type="text/javascript" src="javaScript.ajax.js"></script>
+    <script type="text/javascript" src="javaScript/ajax.js"></script>
     <script>
        function time(){
            document.getElementById('displayText').innerHTML="<p>Данные отправлены</p>";
@@ -97,7 +97,7 @@
                     <p class="agreement"><input type="checkbox" name="agree"> <a href="#">Принимаю условия
                         соглашения</a></p>
                     <%--<input type="button" class="textInput" value="Поехали" onclick="getDrivers('${pageContext.request.contextPath}/save.do', 'post','data')">--%>
-                   <input type="button" class="textInput" value="Поехали" onclick="JavaScript:do_post_ajax()">
+                   <input type="button" class="textInput" value="Поехали" onclick="do_post_ajax()">
                     <div id="displayText"></div>
                 </form>
 <%--   <a href="JavaScript:do_post_ajax()">проверить POST</a><p>--%>

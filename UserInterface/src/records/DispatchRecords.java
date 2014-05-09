@@ -22,7 +22,6 @@ public class DispatchRecords extends DispatchAction {
 
     public static final String FORWARD_LIST_RECORDS = "listRecord";
     public static final String FORWARD_SAVE_RECORD = "saveRecord";
-    public static final String FORWARD_ERROR = "error";
 
     @Override
     protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
@@ -59,7 +58,6 @@ public class DispatchRecords extends DispatchAction {
 
 
     public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
         RecordsForm routesForm = (RecordsForm) form;
         User user = routesForm.getUser();
         HibernateUtil hibernateUtil = new HibernateUtil();

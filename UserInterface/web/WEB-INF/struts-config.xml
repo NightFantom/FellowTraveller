@@ -7,6 +7,7 @@
         <form-bean name="driver" type="driver.DriverActionForm"/>
         <form-bean name="passenger" type="passenger.PassengerActionForm"/>
         <form-bean name="Record" type="hibernateServise.User"/>
+        <form-bean name="Records" type="hibernateServise.RecordsForm"/>
     </form-beans>
 
     <action-mappings>
@@ -29,9 +30,16 @@
         <action path="/save"
                 type="records.DispatchRecords"
                 name="Record"
-                parameter="saveRecords"
+                parameter="save"
                 scope="request">
             <forward name="successful" path="/jsp/setRoute.jsp"/>
+        </action>
+        <action path="/getRecords"
+                type="records.DispatchRecords"
+                name="Record"
+                parameter="getSpecificRecords"
+                scope="request">
+            <forward name="successful" path="/jsp/getRoutes.jsp"/>
         </action>
     </action-mappings>
 </struts-config>

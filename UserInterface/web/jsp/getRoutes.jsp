@@ -1,14 +1,23 @@
-<%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
-<%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Виктор
-  Date: 02.05.2014
-  Time: 20:45
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<table>
-    kjhghgh
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix ="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<table class="tableRecords" c>
+    <tr class="tableHeader">
+        <td class="place">Откуда </td>
+        <td class="place">Куда</td>
+        <td class="date">День</td>
+        <td class="date">Месяц</td>
+        <td class="date">Страница ВКонтакте </td>
+        <td class="comment">Комментарий</td>
+    </tr>
+
+    <logic:iterate id="user" name="Records" property="users">
+        <tr>
+            <td><bean:write name="user" property="from"/> </td>
+            <td><bean:write name="user" property="where"/> </td>
+            <td><bean:write name="user" property="day" format=""/> </td>
+            <td><bean:write name="user" property="month" format=""/> </td>
+            <td><a href="<bean:write name="user" property="vkId"/>"> VK</a></td>
+            <td><bean:write name="user" property="comment"/> </td>
+        </tr>
+    </logic:iterate>
 </table>
