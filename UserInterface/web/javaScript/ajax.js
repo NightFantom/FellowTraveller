@@ -82,12 +82,6 @@ function getRequestBody(oForm) {
 //    document.getElementById(id).innerHTML=d;
 //}
 
-/**
- *
- * @param url
- * @param oForm
- * @param callback
- */
 function postAjax(url,oForm,callback) { // функция Ajax POST
     var oXmlHttp = createXMLHttp();
     var sBody = getRequestBody(oForm);
