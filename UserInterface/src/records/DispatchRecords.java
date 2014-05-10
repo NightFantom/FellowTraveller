@@ -41,6 +41,7 @@ public class DispatchRecords extends DispatchAction {
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         User user = (User) form;
+        user.setMail("");
         HibernateUtil hibernateUtil = new HibernateUtil();
         try {
             Session session = hibernateUtil.currentSession();
@@ -67,18 +68,18 @@ public class DispatchRecords extends DispatchAction {
             if (routesForm.getFrom() != null) {
                 criteria.add(Restrictions.like("from", routesForm.getFrom()));
             }
-            if (routesForm.getWhere() != null) {
+            if (!routesForm.getWhere().equals("")) {
                 criteria.add(Restrictions.like("where", routesForm.getWhere()));
             }
-            if (routesForm.getDay() != null) {
+            Integer day = routesForm.getDay();
+            if (day != null && day.compareTo(new Integer(0)) != 0) {
                 criteria.add(Restrictions.like("day", routesForm.getDay()));
             }
-            if (routesForm.getMonth() != null) {
+            Integer month = routesForm.getMonth();
+            if (month != null && month.compareTo(new Integer(0)) != 0) {
                 criteria.add(Restrictions.like("month", routesForm.getMonth()));
             }
-
-            List<User> list = criteria.list();
-            routesForm.setUsers(list);
+            routesForm.setUsers(criteria.list());
         } catch (Exception e) {
             throw e;
         } finally {

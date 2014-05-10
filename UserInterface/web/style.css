@@ -89,9 +89,31 @@ a{
     color:black;
     margin:0 20px 0 0;
 }
+.tableRecords{
+    width: 100%;
+    text-align:center;
+    margin: 10px 0 0;
 
-#data{
+}
 
+.tableRecords tr{
+    background-color: white;
+    margin:5px 0;
+}
+
+.tableHeader{
+    color:#235f8a;
+    font-size:16pt;
+}
+
+.place{
+    width: 200px;
+}
+.comment{
+
+}
+.inform{
+    width:60px;
 }
 
 .date{
