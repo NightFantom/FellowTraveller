@@ -41,6 +41,7 @@ public class DispatchRecords extends DispatchAction {
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         User user = (User) form;
+        user.setMail("");
         HibernateUtil hibernateUtil = new HibernateUtil();
         try {
             Session session = hibernateUtil.currentSession();
