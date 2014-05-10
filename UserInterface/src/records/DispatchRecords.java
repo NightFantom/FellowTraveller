@@ -13,7 +13,6 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * Класс предназначен для возвращения маршрутов из БД
@@ -60,12 +59,11 @@ public class DispatchRecords extends DispatchAction {
 
     public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
-        routesForm.getUser();
         HibernateUtil hibernateUtil = new HibernateUtil();
         try {
             Session session = hibernateUtil.currentSession();
             Criteria criteria = session.createCriteria(User.class);
-            if (routesForm.getFrom() != null) {
+            if (!routesForm.getFrom().equals("")) {
                 criteria.add(Restrictions.like("from", routesForm.getFrom()));
             }
             if (!routesForm.getWhere().equals("")) {
