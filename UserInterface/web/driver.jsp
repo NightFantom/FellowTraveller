@@ -8,6 +8,7 @@
 <head>
     <%@include file="DriverAndPassengerPage/header.jsp" %>
     <script type="text/javascript" src="javaScript/ajax.js"></script>
+
     <title>Я водитель</title>
 </head>
 <body>

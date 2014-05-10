@@ -2,6 +2,7 @@
  * функция для работы с различными браузерами
  * @returns {*}
  */
+
 function createXMLHttp() {
     var xmlhttp;
     try {
@@ -56,6 +57,6 @@ function postAjax(url,oForm,id) {
         }
     };
     oXmlHttp.send(sBody);
+    document.getElementById(id).innerHTML= '<img src="images/ajaxloaderblack.gif" >';
+
 }
-
-
