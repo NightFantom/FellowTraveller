@@ -44,7 +44,7 @@ function getRequestBody(oForm) {
 function postAjax(url,oForm,id) {
     var oXmlHttp = createXMLHttp();
     var sBody = getRequestBody(oForm);
-
+    document.getElementById(id).innerHTML= '<img src="images/ajaxloaderblack.gif" >';
     oXmlHttp.open("POST",url,true);
     oXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     oXmlHttp.onreadystatechange = function() {
@@ -57,6 +57,6 @@ function postAjax(url,oForm,id) {
         }
     };
     oXmlHttp.send(sBody);
-    document.getElementById(id).innerHTML= '<img src="images/ajaxloaderblack.gif" >';
+
 
 }

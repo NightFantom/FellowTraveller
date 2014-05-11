@@ -31,6 +31,7 @@ function updatePage() {
 function getDrivers(path, method, id) {
     var req = getXmlHttp();
     var statusElem = document.getElementById(id);
+    document.getElementById(id).innerHTML= '<img src="images/ajaxloaderblack.gif" >';
     req.onreadystatechange = function () {
         // onreadystatechange активируется при получении ответа сервера
         if (req.readyState == 4) {
@@ -50,6 +51,6 @@ function getDrivers(path, method, id) {
     req.open(method, path, true);
     // req.onreadystatechange = updatePage;
     req.send(null);
-    statusElem.innerHTML = 'Ожидаю ответа сервера...'
+  //  statusElem.innerHTML = 'Ожидаю ответа сервера...'
 }
 
