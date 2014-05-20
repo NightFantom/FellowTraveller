@@ -11,7 +11,7 @@
     </form-beans>
 
     <action-mappings>
-        <action path="/createTable"
+        <action path="/protected/createTable"
                 type="panel.settings.CreateTable"
                 scope="request"
                 parameter="start"
@@ -24,42 +24,37 @@
                 parameter="start"
                 name="Logon">
                 <forward name = "successful" path="/panel.jsp" />
-                <forward name = "error" path="/index.jsp" />
         </action>
-        <action path="/getrecords"
+        <action path="/protected/getrecords"
                 type="panel.records.DispatchRecords"
                 scope="session"
                 parameter="get"
                 name="Records">
             <forward name = "listRecord" path="/records/listRecords.jsp" />
-            <forward name = "error" path="/index.jsp" />
         </action>
-        <action path="/panel"
+        <action path="/protected/panel"
                 type="panel.Page"
                 scope="request"
                 name="Empty">
             <forward name = "successful" path="/panel.jsp" />
-            <forward name = "error" path="/index.jsp" />
         </action>
-        <action path="/settings"
+        <action path="/protected/settings"
                 type="panel.Page"
                 scope="request"
                 name="Message">
             <forward name = "successful" path="/settings.jsp" />
-            <forward name = "error" path="/index.jsp" />
         </action>
-        <action path="/logout"
+        <action path="/protected/logout"
                 type="panel.log.LogOut"
                 scope="request"
                 name="Empty">
             <forward name = "successful" path="/index.jsp" />
         </action>
-        <action path="/records"
+        <action path="/protected/records"
                 type="panel.Page"
                 scope="request"
                 name="Empty">
             <forward name = "successful" path="/records.jsp" />
-            <forward name = "error" path="/index.jsp" />
         </action>
 
 
