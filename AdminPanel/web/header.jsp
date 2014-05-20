@@ -15,9 +15,9 @@
     <div id = "head">
         <table>
             <tr>
-                <td><a href="${pageContext.request.contextPath}/records.do">Просмотр записей</a></td>
-                <td><a href="${pageContext.request.contextPath}/settings.do">Настройки</a></td>
-                <td><a href="${pageContext.request.contextPath}/logout.do">Выход</a></td>
+                <td><a href="${pageContext.request.contextPath}/protected/records.do">Просмотр записей</a></td>
+                <td><a href="${pageContext.request.contextPath}/protected/settings.do">Настройки</a></td>
+                <td><a href="${pageContext.request.contextPath}/protected/logout.do">Выход</a></td>
             </tr>
         </table>
     </div>
