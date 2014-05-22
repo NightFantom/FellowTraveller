@@ -25,10 +25,10 @@
                 name="Logon">
                 <forward name = "successful" path="/panel.jsp" />
         </action>
-        <action path="/protected/getrecords"
-                type="panel.records.DispatchRecords"
-                scope="session"
-                parameter="get"
+        <action path="/protected/getallrecords"
+                type="records.DispatchRecords"
+                scope="request"
+                parameter="allRecords"
                 name="Records">
             <forward name = "listRecord" path="/records/listRecords.jsp" />
         </action>
