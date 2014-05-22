@@ -41,6 +41,23 @@ public class DispatchRecords extends DispatchAction {
 
         User user = (User) form;
         user.setMail("");
+/**
+ * if(correct(user)){
+ *   HibernateUtil hibernateUtil = new HibernateUtil();
+    try {
+        Session session = hibernateUtil.currentSession();
+         Transaction transaction = session.beginTransaction();
+         session.save(user);
+         session.getTransaction().commit();
+    } catch (Exception e) {
+        throw e;
+     } finally {
+        hibernateUtil.close();
+ }else{
+     return mapping.findForward(Error);
+ }
+ * }
+  */
         HibernateUtil hibernateUtil = new HibernateUtil();
         try {
             Session session = hibernateUtil.currentSession();
