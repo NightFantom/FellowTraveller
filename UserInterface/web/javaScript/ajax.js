@@ -27,7 +27,7 @@ function createXMLHttp() {
  */
 function getRequestBody(oForm) {
     var aParams = new Array();
-    for(var i = 0; i < oForm.elements.length; i++) {
+    for (var i = 0; i < oForm.elements.length; i++) {
         var sParam = encodeURIComponent(oForm.elements[i].name);
         sParam += "=";
         sParam += encodeURIComponent(oForm.elements[i].value);
@@ -41,18 +41,18 @@ function getRequestBody(oForm) {
  * @param oForm форма которую надо отправить, можно просто прописать document.forms[0]
  * @param id то место в html документе, где будет отображен ответ сервера
  */
-function postAjax(url,oForm,id) {
+function postAjax(url, oForm, id) {
     var oXmlHttp = createXMLHttp();
     var sBody = getRequestBody(oForm);
-    document.getElementById(id).innerHTML= '<img src="images/ajaxloaderblack.gif" >';
-    oXmlHttp.open("POST",url,true);
+    document.getElementById(id).innerHTML = '<img src="images/ajaxloaderblack.gif" >';
+    oXmlHttp.open("POST", url, true);
     oXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    oXmlHttp.onreadystatechange = function() {
-        if(oXmlHttp.readyState == 4) {
-            if(oXmlHttp.status == 200) {
-                document.getElementById(id).innerHTML=oXmlHttp.responseText;
+    oXmlHttp.onreadystatechange = function () {
+        if (oXmlHttp.readyState == 4) {
+            if (oXmlHttp.status == 200) {
+                document.getElementById(id).innerHTML = oXmlHttp.responseText;
             } else {
-                document.getElementById(id).innerHTML="error";
+                document.getElementById(id).innerHTML = "error";
             }
         }
     };
