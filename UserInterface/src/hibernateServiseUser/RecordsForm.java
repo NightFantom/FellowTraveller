@@ -19,6 +19,15 @@ public class RecordsForm extends ActionForm {
     private String mail;
     private String vkId;
     private String comment;
+    private String agree;
+
+    public String getAgree() {
+        return agree;
+    }
+
+    public void setAgree(String agree) {
+        this.agree = agree;
+    }
 
     public Integer getId() {
         return id;

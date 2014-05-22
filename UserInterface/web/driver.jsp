@@ -7,7 +7,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
     <%@include file="DriverAndPassengerPage/header.jsp" %>
-    <script type="text/javascript" src="javaScript/checkAndSendForm.js"></script>
+    <script type="text/javascript" src="javaScript/ajax.js"></script>
     <title>Я водитель</title>
 </head>
 <body>
@@ -76,10 +76,10 @@
 
                     <p>Комментарий <textarea name="comment" id="comment"></textarea></p>
 
-                    <p class="agreement"><input type="checkbox" name="agree" value="agree" checked="checked"> <a href="#">Принимаю условия
+                    <p class="agreement"><input type="checkbox" name="agree" value="true" > <a href="#">Принимаю условия
                         соглашения</a></p>
                     <input type="button" class="textInput" value="Поехали"
-                           onclick="checkAndSend('${pageContext.request.contextPath}/save.do',document.forms[0],'serverAnswer')">
+                           onclick="postAjax('${pageContext.request.contextPath}/save.do',document.forms[0],'serverAnswer')">
                 </form>
                 <div id="serverAnswer"></div>
                 <div class="information"><a href="#">О проекте</a></div>
