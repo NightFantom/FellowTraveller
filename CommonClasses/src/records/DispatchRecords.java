@@ -21,8 +21,13 @@ import javax.servlet.http.HttpServletResponse;
 public class DispatchRecords extends DispatchAction {
     public static final String FORWARD_NEW_RECORDS = "newRecord";
     public static final String FORWARD_LIST_RECORDS = "listRecord";
-    public static final String FORWARD_SAVE_RECORD = "saveRecord";
+    public static final String FORWARD_SAVE_RECORD = "successful";
 
+
+    @Override
+    protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
+        return parameter;
+    }
 
     /**
      * Метод возвращает все записи, занесённые за указанный период
@@ -64,6 +69,7 @@ public class DispatchRecords extends DispatchAction {
 
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = (User) form;
+        user.setMail("");
         try {
             Session session = HibernateUtil.currentSession();
             Transaction transaction = session.beginTransaction();
@@ -81,6 +87,7 @@ public class DispatchRecords extends DispatchAction {
         User user = routesForm.getUser();
         try {
             Session session = HibernateUtil.currentSession();
+            Transaction transaction = session.beginTransaction();
             Criteria criteria = session.createCriteria(User.class);
             if (!user.getFrom().equals("")) {
                 criteria.add(Restrictions.like("from", user.getFrom()));
@@ -97,6 +104,7 @@ public class DispatchRecords extends DispatchAction {
                 criteria.add(Restrictions.like("month", user.getMonth()));
             }
             routesForm.setUsers(criteria.list());
+            transaction.commit();
         } catch (Exception e) {
             throw e;
         }
