@@ -1,7 +1,5 @@
 package authorization;
 
-import org.apache.catalina.filters.FilterBase;
-
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,21 +20,26 @@ public class Authorization implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         Cookie cookies[] = request.getCookies();
-        int i = 0;
-        while (i < cookies.length && !cookies[i].getName().equals("l") ){
-            i++;
-        }
-        if (i < cookies.length){
-            String hash = cookies[i].getValue();
-            String user = (String) request.getSession().getAttribute(hash);
-            if (user != null){
-                filterChain.doFilter(servletRequest, servletResponse);
+        if (cookies != null){
+            int i = 0;
+            while (i < cookies.length && !cookies[i].getName().equals("l") ){
+                i++;
+            }
+            if (i < cookies.length){
+                String hash = cookies[i].getValue();
+                String user = (String) request.getSession().getAttribute(hash);
+                if (user != null){
+                    filterChain.doFilter(servletRequest, servletResponse);
+                }else {
+                    response.sendRedirect(request.getContextPath());
+                }
             }else {
                 response.sendRedirect(request.getContextPath());
             }
         }else {
             response.sendRedirect(request.getContextPath());
         }
+
     }
 
     @Override
