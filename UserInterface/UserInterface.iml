@@ -39,6 +39,7 @@
     <orderEntry type="library" name="struts" level="application" />
     <orderEntry type="library" name="mysql-connector" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="MyTomcat" level="application_server_libraries" />
+    <orderEntry type="module" module-name="CommonClasses" />
   </component>
 </module>
 
