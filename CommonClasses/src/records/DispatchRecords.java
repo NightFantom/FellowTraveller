@@ -1,4 +1,4 @@
-package panel.records;
+package records;
 
 import hibernateServise.RecordsForm;
 import org.apache.struts.action.ActionForm;
