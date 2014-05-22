@@ -5,10 +5,13 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import hibernateServise.HibernateUtil;
 import hibernateServise.User;
+import org.hibernate.criterion.Restrictions;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -48,63 +51,55 @@ public class DispatchRecords extends DispatchAction {
      */
     public ActionForward allRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
-        Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            Session session = HibernateUtil.currentSession();
             Transaction transaction = session.beginTransaction();
             routesForm.setUsers(session.createCriteria(User.class).list());
             session.getTransaction().commit();
         } catch (Exception e) {
             throw e;
-        } finally {
-//           session.getSessionFactory().close();
         }
         return mapping.findForward(FORWARD_LIST_RECORDS);
     }
 
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        User user = (User) form;
-//        HibernateUtil hibernateUtil = new HibernateUtil();
-//        try {
-//            Session session = hibernateUtil.currentSession();
-//            Transaction transaction = session.beginTransaction();
-//            session.save(user);
-//            session.getTransaction().commit();
-//        } catch (Exception e) {
-//            throw e;
-//        } finally {
-//            hibernateUtil.close();
-//        }
+        User user = (User) form;
+        try {
+            Session session = HibernateUtil.currentSession();
+            Transaction transaction = session.beginTransaction();
+            session.save(user);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            throw e;
+        }
         return mapping.findForward(FORWARD_SAVE_RECORD);
 
     }
 
     public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        RecordsForm routesForm = (RecordsForm) form;
-//        User user = routesForm.getUser();
-//        HibernateUtil hibernateUtil = new HibernateUtil();
-//        try {
-//            Session session = hibernateUtil.currentSession();
-//            Criteria criteria = session.createCriteria(User.class);
-//            if (user.getFrom() != null) {
-//                criteria.add(Restrictions.like("from", user.getFrom()));
-//            }
-//            if (user.getWhere() != null) {
-//                criteria.add(Restrictions.like("where", user.getWhere()));
-//            }
-//            if (user.getDay() != null) {
-//                criteria.add(Restrictions.like("day", user.getDay()));
-//            }
-//            if (user.getMonth() != null) {
-//                criteria.add(Restrictions.like("month", user.getMonth()));
-//            }
-//            List<User> list = criteria.list();
-//            routesForm.setUsers(list);
-//        } catch (Exception e) {
-//            throw e;
-//        } finally {
-//            hibernateUtil.close();
-//        }
+        RecordsForm routesForm = (RecordsForm) form;
+        User user = routesForm.getUser();
+        try {
+            Session session = HibernateUtil.currentSession();
+            Criteria criteria = session.createCriteria(User.class);
+            if (!user.getFrom().equals("")) {
+                criteria.add(Restrictions.like("from", user.getFrom()));
+            }
+            if (!user.getWhere().equals("")) {
+                criteria.add(Restrictions.like("where", user.getWhere()));
+            }
+            Integer day = user.getDay();
+            if (day != null && day.compareTo(new Integer(0)) != 0) {
+                criteria.add(Restrictions.like("day", user.getDay()));
+            }
+            Integer month = user.getMonth();
+            if (month != null && month.compareTo(new Integer(0)) != 0) {
+                criteria.add(Restrictions.like("month", user.getMonth()));
+            }
+            routesForm.setUsers(criteria.list());
+        } catch (Exception e) {
+            throw e;
+        }
         return mapping.findForward(FORWARD_LIST_RECORDS);
 
     }

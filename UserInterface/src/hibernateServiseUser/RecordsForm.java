@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class RecordsForm extends ActionForm {
     private User user;
+    private List<User> users;
     private Integer id;
     private String from;
     private String where;
@@ -83,7 +84,6 @@ public class RecordsForm extends ActionForm {
         this.comment = comment;
     }
 
-    private List<User> users;
 
     public User getUser() {
         return user;

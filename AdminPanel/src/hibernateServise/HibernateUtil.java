@@ -1,5 +1,6 @@
 package hibernateServise;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.SessionFactoryObserver;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -36,7 +37,13 @@ public class HibernateUtil {
         }
     }
 
+    public static void close(){
+        sessionFactory.close();
+    }
 
+    public static Session currentSession(){
+        return sessionFactory.getCurrentSession();
+    }
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
