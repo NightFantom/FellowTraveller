@@ -6,8 +6,8 @@
     <form-beans>
         <form-bean name="driver" type="driver.DriverActionForm"/>
         <form-bean name="passenger" type="passenger.PassengerActionForm"/>
-        <form-bean name="Record" type="hibernateServise.User"/>
-        <form-bean name="Records" type="hibernateServise.RecordsForm"/>
+        <form-bean name="Record" type="hibernateServiseUser.User"/>
+        <form-bean name="Records" type="hibernateServiseUser.RecordsForm"/>
     </form-beans>
 
     <action-mappings>

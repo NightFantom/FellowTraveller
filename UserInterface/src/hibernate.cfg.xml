@@ -16,7 +16,7 @@
         <property name="connection.characterEncoding">UTF-8</property>
         <property name="connection.useUnicode">true</property>
 
-        <mapping resource="hibernateServise/User.hbm.xml"/>
+        <mapping resource="hibernateServiseUser/User.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

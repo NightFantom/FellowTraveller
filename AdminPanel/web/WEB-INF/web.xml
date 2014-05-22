@@ -19,7 +19,6 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-
     <filter>
         <filter-name>Authorization</filter-name>
         <filter-class>
@@ -30,9 +29,7 @@
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
-
     </filter-mapping>
-
     <filter-mapping>
         <filter-name>Authorization</filter-name>
         <url-pattern>/protected/*</url-pattern>
@@ -42,6 +39,7 @@
         <servlet-name>Action</servlet-name>
         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
     </servlet>
+
 
 
     <servlet-mapping>
