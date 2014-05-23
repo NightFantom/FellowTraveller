@@ -22,7 +22,7 @@ public class DispatchRecords extends DispatchAction {
     public static final String FORWARD_NEW_RECORDS = "newRecord";
     public static final String FORWARD_LIST_RECORDS = "listRecord";
     public static final String FORWARD_SAVE_RECORD = "successful";
-
+    public static final String FORWARD_ERROR = "error";
 
     @Override
     protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
@@ -79,16 +79,24 @@ public class DispatchRecords extends DispatchAction {
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = (User) form;
         user.setMail("");
-        try {
-            Session session = HibernateUtil.currentSession();
-            Transaction transaction = session.beginTransaction();
-            session.save(user);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            throw e;
-        }
-        return mapping.findForward(FORWARD_SAVE_RECORD);
+        if (user != null &&CheckRecords.driverFormIsCorrect(user)) {
 
+            try {
+                Session session = HibernateUtil.currentSession();
+                Transaction transaction = session.beginTransaction();
+                session.save(user);
+
+                session.getTransaction().commit();
+
+
+            } catch (Exception e) {
+                throw e;
+            }
+            return mapping.findForward(FORWARD_SAVE_RECORD);
+        } else {
+            return mapping.findForward(FORWARD_ERROR);
+
+        }
     }
 
     /**
@@ -103,30 +111,37 @@ public class DispatchRecords extends DispatchAction {
     public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
         User user = routesForm.getUser();
-        try {
-            Session session = HibernateUtil.currentSession();
-            Transaction transaction = session.beginTransaction();
-            Criteria criteria = session.createCriteria(User.class);
-            if (!user.getFrom().equals("")) {
-                criteria.add(Restrictions.like("from", user.getFrom()));
+        if (user != null && CheckRecords.passengerFormIsCorrect(user)) {
+            try {
+                Session session = HibernateUtil.currentSession();
+                Transaction transaction = session.beginTransaction();
+                Criteria criteria = session.createCriteria(User.class);
+
+                if (!user.getFrom().equals("")) {
+                    criteria.add(Restrictions.like("from", user.getFrom()));
+                }
+                if (!user.getWhere().equals("")) {
+                    criteria.add(Restrictions.like("where", user.getWhere()));
+                }
+                Integer day = user.getDay();
+                if (day != null && day.compareTo(new Integer(0)) != 0) {
+                    criteria.add(Restrictions.like("day", user.getDay()));
+                }
+                Integer month = user.getMonth();
+                if (month != null && month.compareTo(new Integer(0)) != 0) {
+                    criteria.add(Restrictions.like("month", user.getMonth()));
+                }
+                routesForm.setUsers(criteria.list());
+
+                transaction.commit();
+
+            } catch (Exception e) {
+                throw e;
             }
-            if (!user.getWhere().equals("")) {
-                criteria.add(Restrictions.like("where", user.getWhere()));
-            }
-            Integer day = user.getDay();
-            if (day != null && day.compareTo(new Integer(0)) != 0) {
-                criteria.add(Restrictions.like("day", user.getDay()));
-            }
-            Integer month = user.getMonth();
-            if (month != null && month.compareTo(new Integer(0)) != 0) {
-                criteria.add(Restrictions.like("month", user.getMonth()));
-            }
-            routesForm.setUsers(criteria.list());
-            transaction.commit();
-        } catch (Exception e) {
-            throw e;
+            return mapping.findForward(FORWARD_LIST_RECORDS);
+        } else {
+            return mapping.findForward(FORWARD_ERROR);
         }
-        return mapping.findForward(FORWARD_LIST_RECORDS);
 
     }
 }

@@ -52,7 +52,7 @@ function postAjax(url, oForm, id) {
             if (oXmlHttp.status == 200) {
                 document.getElementById(id).innerHTML = oXmlHttp.responseText;
             } else {
-                document.getElementById(id).innerHTML = "error";
+                document.getElementById(id).innerHTML = "ajax error";
             }
         }
     };

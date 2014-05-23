@@ -15,6 +15,7 @@
                 parameter="saveRecords"
                 scope="request">
             <forward name="successful" path="/jsp/setRoute.jsp"/>
+            <forward name="error" path="/error.jsp"/>
         </action>
         <action path="/getRecords"
                 type="records.DispatchRecords"
@@ -22,6 +23,7 @@
                 parameter="getSpecificRecords"
                 scope="request">
             <forward name="successful" path="/jsp/getRoutes.jsp"/>
+            <forward name="error" path="/error.jsp"/>
         </action>
         <action path="/driver"
                 forward="/driver.jsp"/>
