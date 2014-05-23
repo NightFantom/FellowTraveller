@@ -5,7 +5,7 @@
 <struts-config>
     <form-beans>
         <form-bean name="Record" type="hibernateServise.User"/>
-        <form-bean name="Records" type="hibernateServise.RecordsForm" />
+        <form-bean name="Records" type="hibernateServise.RecordsForm"/>
     </form-beans>
 
     <action-mappings>
@@ -23,5 +23,9 @@
                 scope="request">
             <forward name="successful" path="/jsp/getRoutes.jsp"/>
         </action>
+        <action path="/driver"
+                forward="/driver.jsp"/>
+        <action path="/passenger"
+                forward="/passenger.jsp"/>
     </action-mappings>
 </struts-config>
