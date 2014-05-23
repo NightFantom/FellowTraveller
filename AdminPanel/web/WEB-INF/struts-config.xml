@@ -32,6 +32,12 @@
                 name="Records">
             <forward name = "listRecord" path="/records/listRecords.jsp" />
         </action>
+        <action path="/protected/stopHib"
+                type="panel.settings.StopHibernate"
+                scope="request"
+                name="Message">
+            <forward name = "successful" path="/settings.jsp" />
+        </action>
         <action path="/protected/panel"
                 type="panel.Page"
                 scope="request"

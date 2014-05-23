@@ -67,6 +67,15 @@ public class DispatchRecords extends DispatchAction {
         return mapping.findForward(FORWARD_LIST_RECORDS);
     }
 
+    /**
+     * Метод сохраняет данные о маршруте
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = (User) form;
         user.setMail("");
@@ -90,6 +99,15 @@ public class DispatchRecords extends DispatchAction {
         }
     }
 
+    /**
+     * Метод получает все маршруты, соответствующие критериям из form
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
         User user = routesForm.getUser();
