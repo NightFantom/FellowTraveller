@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DispatchRecords extends DispatchAction {
     public static final String FORWARD_NEW_RECORDS = "newRecord";
-    public static final String FORWARD_LIST_RECORDS = "listRecord";
+    public static final String FORWARD_LIST_RECORDS = "successful";
     public static final String FORWARD_SAVE_RECORD = "successful";
     public static final String FORWARD_ERROR = "error";
 
@@ -80,15 +80,11 @@ public class DispatchRecords extends DispatchAction {
         User user = (User) form;
         user.setMail("");
         if (user != null &&CheckRecords.driverFormIsCorrect(user)) {
-
             try {
                 Session session = HibernateUtil.currentSession();
                 Transaction transaction = session.beginTransaction();
                 session.save(user);
-
                 session.getTransaction().commit();
-
-
             } catch (Exception e) {
                 throw e;
             }
@@ -110,13 +106,17 @@ public class DispatchRecords extends DispatchAction {
      */
     public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
-        User user = routesForm.getUser();
+        User user = new User();
+        user.setFrom(routesForm.getFrom());
+        user.setWhere(routesForm.getWhere());
+        user.setDay(routesForm.getDay());
+        user.setMonth(routesForm.getMonth());
+        user.setAgree(routesForm.getAgree());
         if (user != null && CheckRecords.passengerFormIsCorrect(user)) {
             try {
                 Session session = HibernateUtil.currentSession();
                 Transaction transaction = session.beginTransaction();
                 Criteria criteria = session.createCriteria(User.class);
-
                 if (!user.getFrom().equals("")) {
                     criteria.add(Restrictions.like("from", user.getFrom()));
                 }
@@ -132,9 +132,7 @@ public class DispatchRecords extends DispatchAction {
                     criteria.add(Restrictions.like("month", user.getMonth()));
                 }
                 routesForm.setUsers(criteria.list());
-
                 transaction.commit();
-
             } catch (Exception e) {
                 throw e;
             }
