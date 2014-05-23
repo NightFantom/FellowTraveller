@@ -75,7 +75,7 @@
                         </select>
                     </p>
 
-                    <p class="agreement"><input type="checkbox" name="agree"> <a href="#">Принимаю условия
+                    <p class="agreement"><input type="checkbox" name="agree" value="true"> <a href="#">Принимаю условия
                         соглашения</a></p>
                     <input type="button" class="textInput" value="Поехали"
                            onclick="postAjax('${pageContext.request.contextPath}/getRecords.do',document.forms[0],'serverAnswer')">
