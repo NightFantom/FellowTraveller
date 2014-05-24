@@ -15,8 +15,8 @@
 
     <logic:iterate id="user" name="Records" property="users">
         <tr>
-            <td onclick="getDrivers('${pageContext.request.contextPath}/protected/approve.do?id=<bean:write name="user" property="id" format=""/>', 'post', 'data')"> Одобрить</td>
-            <td onclick="getDrivers('${pageContext.request.contextPath}/protected/delete.do?id=<bean:write name="user" property="id" format=""/>&table=routebuf', 'post', 'data')">Удалить</td>
+            <td class="approve" onclick="getDrivers('${pageContext.request.contextPath}/protected/approve.do?id=<bean:write name="user" property="id" format=""/>', 'post', 'data')"> <img src="${pageContext.request.contextPath}/images/approve.jpg"></td>
+            <td class="delete" onclick="getDrivers('${pageContext.request.contextPath}/protected/delete.do?id=<bean:write name="user" property="id" format=""/>&table=routebuf', 'post', 'data')"><img src="${pageContext.request.contextPath}/images/delete.jpg"></td>
             <td><bean:write name="user" property="from"/> </td>
             <td><bean:write name="user" property="where"/> </td>
             <td><bean:write name="user" property="day" format=""/> </td>
