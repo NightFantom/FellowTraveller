@@ -20,6 +20,13 @@
         </configuration>
       </facet>
     </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map />
+        <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/../CommonClasses/src/hibernateServise/hibernate.cfg.xml" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -28,10 +35,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="MyTomcat" level="application_server_libraries" />
     <orderEntry type="library" name="hibernate" level="application" />
     <orderEntry type="library" name="struts" level="application" />
     <orderEntry type="library" name="mysql-connector" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.53" level="application_server_libraries" />
     <orderEntry type="module" module-name="CommonClasses" />
   </component>
 </module>
