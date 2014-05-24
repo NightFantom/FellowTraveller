@@ -1,7 +1,6 @@
 package records;
 
-import hibernateServise.HibernatePlugin;
-import hibernateServise.RecordsForm;
+import hibernateServise.*;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -10,8 +9,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import hibernateServise.HibernateUtil;
-import hibernateServise.User;
 import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,18 +18,41 @@ import javax.servlet.http.HttpServletResponse;
  * Класс предназначен для возвращения маршрутов из БД
  */
 public class DispatchRecords extends DispatchAction {
-    public static final String FORWARD_NEW_RECORDS = "newRecord";
-    public static final String FORWARD_LIST_RECORDS = "successful";
+    public static final String FORWARD_NEW_RECORDS = "newRecords";
+    public static final String FORWARD_LIST_RECORDS = "listRecords";
     public static final String FORWARD_SAVE_RECORD = "successful";
     public static final String FORWARD_ERROR = "error";
+    private  static final String BUF_TABLE = "routebuf";
+    private  static final String TABLE = "route";
 
     @Override
     protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
         return parameter;
     }
 
+    public ActionForward delete(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        RecordsForm routesForm = (RecordsForm) form;
+        User user = new User();
+        user.setId(routesForm.getId());
+        String table = request.getParameter("table");
+        try {
+            Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
+            session.beginTransaction();
+            session.delete(table,user);
+            routesForm.setUsers(session.createCriteria(table).list());
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            throw e;
+        }
+        if (table.equals(TABLE)){
+            return mapping.findForward(FORWARD_LIST_RECORDS);
+        }else {
+            return mapping.findForward(FORWARD_NEW_RECORDS);
+        }
+    }
+
     /**
-     * Метод возвращает все записи, занесённые за указанный период
+     * Метод переносит данные из буферной таблицы в исходную
      *
      * @param mapping
      * @param form
@@ -41,10 +61,24 @@ public class DispatchRecords extends DispatchAction {
      * @return
      * @throws Exception
      */
-    public ActionForward newRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+    public ActionForward approve(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        RecordsForm routesForm = (RecordsForm) form;
+        User user = new User();
+        user.setId(routesForm.getId());
+        try {
+            Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
+            session.beginTransaction();
+            user = (User) session.load(BUF_TABLE,user.getId());
+            session.delete(BUF_TABLE,user);
+            session.save(TABLE, user);
+            routesForm.setUsers(session.createCriteria(BUF_TABLE).list());
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            throw e;
+        }
         return mapping.findForward(FORWARD_NEW_RECORDS);
     }
+
 
     /**
      * Метод возвращает все записи
@@ -58,20 +92,26 @@ public class DispatchRecords extends DispatchAction {
      */
     public ActionForward allRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
+        String table = (String)request.getParameter("table");
         try {
-            //Session session = HibernateUtil.currentSession();
             Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
-            Transaction transaction = session.beginTransaction();
-            routesForm.setUsers(session.createCriteria(User.class).list());
+            session.beginTransaction();
+            routesForm.setUsers(session.createCriteria(table).list());
             session.getTransaction().commit();
         } catch (Exception e) {
             throw e;
         }
-        return mapping.findForward(FORWARD_LIST_RECORDS);
+        if (table.equals(TABLE)){
+            return mapping.findForward(FORWARD_LIST_RECORDS);
+        }else {
+            return mapping.findForward(FORWARD_NEW_RECORDS);
+        }
+
     }
 
     /**
      * Метод сохраняет данные о маршруте
+     *
      * @param mapping
      * @param form
      * @param request
@@ -82,11 +122,11 @@ public class DispatchRecords extends DispatchAction {
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = (User) form;
         user.setMail("");
-        if (user != null &&CheckRecords.driverFormIsCorrect(user)) {
+        if (user != null && CheckRecords.driverFormIsCorrect(user)) {
             try {
                 Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
-                Transaction transaction = session.beginTransaction();
-                session.save(user);
+                session.beginTransaction();
+                session.save("routebuf", user);
                 session.getTransaction().commit();
             } catch (Exception e) {
                 throw e;
@@ -100,6 +140,7 @@ public class DispatchRecords extends DispatchAction {
 
     /**
      * Метод получает все маршруты, соответствующие критериям из form
+     *
      * @param mapping
      * @param form
      * @param request
