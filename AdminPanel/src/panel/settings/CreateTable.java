@@ -61,9 +61,42 @@ public class CreateTable extends BaseAction{
                     "COLLATE utf8_general_ci\n" +
                     "AUTO_INCREMENT = 0";
             connection.createStatement().execute(send);
-            messageForm.setMessage("Таблица создана успешно");
+            messageForm.setMessage("Таблица route создана успешно");
         }catch (SQLException e){
-            messageForm.setMessage("Не удалось создать таблицу \n" + e.getMessage());
+            messageForm.setMessage("Не удалось создать таблицу route\n" + e.getMessage());
+        }
+        finally {
+            if (cursor != null)
+            {
+                cursor.close();
+            }
+            if (connection != null)
+            {
+                connection.close();
+            }
+        }
+        try {
+            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
+            String send = "CREATE TABLE `routeBuf`  ( \n" +
+                    "\t`id`     \tint(11) NOT NULL AUTO_INCREMENT,\n" +
+                    "\t`from`   \tvarchar(25) NOT NULL,\n" +
+                    "\t`where`  \tvarchar(25) NOT NULL,\n" +
+                    "\t`day` integer(11) NOT NULL,\n" +
+                    "\t`month` integer(11) NOT NULL,\n"+
+                    "\t`mail`   \tvarchar(25) NOT NULL,\n" +
+                    "\t`vkId`   \tvarchar(50) NOT NULL,\n" +
+                    "\t`comment`\tvarchar(100) NULL,\n" +
+                    "\t`time`\ttimestamp NOT NULL,\n "+
+                    "\tPRIMARY KEY(`id`)\n" +
+                    ")\n" +
+                    "ENGINE = MyISAM\n" +
+                    "CHARACTER SET utf8\n" +
+                    "COLLATE utf8_general_ci\n" +
+                    "AUTO_INCREMENT = 0";
+            connection.createStatement().execute(send);
+            messageForm.setMessage(messageForm.getMessage() + "\n"+"Таблица routeBuf создана успешно");
+        }catch (SQLException e){
+            messageForm.setMessage(messageForm.getMessage() + "\n"+"Не удалось создать таблицу routeBuf\n" + e.getMessage());
         }
         finally {
             if (cursor != null)
