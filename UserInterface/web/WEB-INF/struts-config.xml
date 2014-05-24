@@ -22,7 +22,7 @@
                 name="Records"
                 parameter="getSpecificRecords"
                 scope="request">
-            <forward name="successful" path="/jsp/getRoutes.jsp"/>
+            <forward name="listRecords" path="/jsp/getRoutes.jsp"/>
             <forward name="error" path="/error.jsp"/>
         </action>
         <action path="/driver"

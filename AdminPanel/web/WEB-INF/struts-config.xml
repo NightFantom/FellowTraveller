@@ -30,40 +30,39 @@
                 scope="request"
                 parameter="allRecords"
                 name="Records">
-            <forward name = "successful" path="/records/listRecords.jsp" />
+            <forward name = "listRecords" path="/records/listRecords.jsp"/>
+            <forward name = "newRecords" path="/records/newRecords.jsp"/>
         </action>
-        <action path="/protected/stopHib"
-                type="panel.settings.StopHibernate"
+        <action path="/protected/approve"
+                type="records.DispatchRecords"
                 scope="request"
-                name="Message">
-            <forward name = "successful" path="/settings.jsp" />
+                parameter="approve"
+                name="Records">
+            <forward name = "newRecords" path="/records/newRecords.jsp" />
         </action>
-        <action path="/protected/panel"
-                type="panel.Page"
+        <action path="/protected/delete"
+                type="records.DispatchRecords"
                 scope="request"
-                name="Empty">
-            <forward name = "successful" path="/panel.jsp" />
+                parameter="delete"
+                name="Records">
+            <forward name = "listRecords" path="/records/listRecords.jsp"/>
+            <forward name = "newRecords" path="/records/newRecords.jsp"/>
         </action>
         <action path="/protected/settings"
-                type="panel.Page"
                 scope="request"
-                name="Message">
-            <forward name = "successful" path="/settings.jsp" />
-        </action>
+                name="Message"
+                forward ="/settings.jsp" />
         <action path="/protected/logout"
                 type="panel.log.LogOut"
                 scope="request"
                 name="Empty">
             <forward name = "successful" path="/index.jsp" />
         </action>
+
         <action path="/protected/records"
-                type="panel.Page"
-                scope="request"
-                name="Empty">
-            <forward name = "successful" path="/records.jsp" />
-        </action>
-
-
+                forward ="/records.jsp" />
+        <action path="/protected/panel"
+                forward = "/panel.jsp" />
     </action-mappings>
     <plug-in className="hibernateServise.HibernatePlugin"/>
 </struts-config>
