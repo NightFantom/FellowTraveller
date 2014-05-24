@@ -1,10 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping
         PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="hibernateServise.User" table="route">
+    <class name="hibernateServise.User" table="route" entity-name="route">
+    <id column="id" name="id" type="integer">
+        <generator class="increment"/>
+    </id>
+    <property column="`from`" name="from" type="string"/>
+    <property column="`where`" name="where" type="string"/>
+    <property column="`day`" name="day" type="integer"/>
+    <property column="`month`" name="month" type="integer"/>
+    <property column="`mail`" name="mail" type="string"/>
+    <property column="`vkId`" name="vkId" type="string"/>
+    <property column="`comment`" name="comment" type="string"/>
+</class>
+    <class name="hibernateServise.User" table="routebuf" entity-name="routebuf">
         <id column="id" name="id" type="integer">
             <generator class="increment"/>
         </id>
