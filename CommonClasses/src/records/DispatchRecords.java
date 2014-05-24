@@ -30,6 +30,15 @@ public class DispatchRecords extends DispatchAction {
         return parameter;
     }
 
+    /**
+     * Метод удаляет запись из БД
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward delete(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
         User user = new User();
