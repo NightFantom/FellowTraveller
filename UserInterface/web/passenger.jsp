@@ -8,7 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
     <%@include file="DriverAndPassengerPage/header.jsp" %>
+    <script type="text/javascript" src="javaScript/ajax.js"></script>
+    <script type="text/javascript" src="javaScript/checkForm.js"></script>
     <title>Я пассажир</title>
+
 
 </head>
 <body>
@@ -19,12 +22,21 @@
             <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
             <div class="form">
                 <form>
-                    <p>Откуда <input class="textInput" type="text" name="from"></p>
+                    <p>Откуда <input id="from" class="textInput" type="text" name="from"
+                                     onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
+                                     onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
+                                     onchange="checkPassengerForm('from','where','date','month','agree','button')"> </p>
 
-                    <p>Куда <input class="textInput" type="text" name="where"></p>
+                    <p>Куда <input id="where" class="textInput" type="text" name="where"
+                                   onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
+                                   onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
+                                   onchange="checkPassengerForm('from','where','date','month','agree','button')"></p>
 
                     <p>Когда
-                        <select class="date" name="day" id="date">
+                        <select class="date" name="day" id="date"
+                                onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
+                                onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
+                                onchange="checkPassengerForm('from','where','date','month','agree','button')">
                             <option value="0"></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -58,7 +70,10 @@
                             <option value="30">30</option>
                             <option value="31">31</option>
                         </select>
-                        <select class="date" name="month" id="month">
+                        <select class="date" name="month" id="month"
+                                onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
+                                onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
+                                onchange="checkPassengerForm('from','where','date','month','agree','button')">
                             <option value="0"></option>
                             <option value="1">Янв</option>
                             <option value="2">Фев</option>
@@ -73,11 +88,16 @@
                             <option value="11">Ноя</option>
                             <option value="12">Дек</option>
                         </select>
+                    <div id="checkDate"></div>
                     </p>
 
-                    <p class="agreement"><input type="checkbox" name="agree" value="true"> <a href="#">Принимаю условия
-                        соглашения</a></p>
-                    <input type="button" class="textInput" value="Поехали"
+                    <p class="agreement">
+
+                        <input type="checkbox" id="agree" name="agree" onclick="checkPassengerForm('from','where','date','month','agree','button')"  >
+                        <a href="#">Принимаю условия соглашения</a>
+
+                    </p>
+                    <input id="button" type="button" class="textInput" value="Поехали" disabled="disabled"
                            onclick="postAjax('${pageContext.request.contextPath}/getRecords.do',document.forms[0],'serverAnswer')">
                 </form>
                 <div id="serverAnswer"></div>
