@@ -7,7 +7,6 @@
 --%>
 <%@include file="header.jsp"%>
 <a href="${pageContext.request.contextPath}/protected/createTable.do">Создать таблицу</a>
-<a href="${pageContext.request.contextPath}/protected/stopHib.do">Остановить Hibernate</a>
 <p>Статус:</p>
 <p><bean:write name = "Message" property="message"/></p>
 <%@include file="footer.jsp"%>
