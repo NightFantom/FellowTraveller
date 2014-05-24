@@ -30,4 +30,5 @@
         <action path="/passenger"
                 forward="/passenger.jsp"/>
     </action-mappings>
+    <plug-in className="hibernateServise.HibernatePlugin"/>
 </struts-config>
