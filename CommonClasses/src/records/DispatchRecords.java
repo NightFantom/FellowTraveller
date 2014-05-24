@@ -1,5 +1,6 @@
 package records;
 
+import hibernateServise.HibernatePlugin;
 import hibernateServise.RecordsForm;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -7,6 +8,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import hibernateServise.HibernateUtil;
 import hibernateServise.User;
@@ -57,7 +59,8 @@ public class DispatchRecords extends DispatchAction {
     public ActionForward allRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
         try {
-            Session session = HibernateUtil.currentSession();
+            //Session session = HibernateUtil.currentSession();
+            Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
             Transaction transaction = session.beginTransaction();
             routesForm.setUsers(session.createCriteria(User.class).list());
             session.getTransaction().commit();
@@ -81,7 +84,7 @@ public class DispatchRecords extends DispatchAction {
         user.setMail("");
         if (user != null &&CheckRecords.driverFormIsCorrect(user)) {
             try {
-                Session session = HibernateUtil.currentSession();
+                Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
                 Transaction transaction = session.beginTransaction();
                 session.save(user);
                 session.getTransaction().commit();
@@ -114,7 +117,7 @@ public class DispatchRecords extends DispatchAction {
         user.setAgree(routesForm.getAgree());
         if (user != null && CheckRecords.passengerFormIsCorrect(user)) {
             try {
-                Session session = HibernateUtil.currentSession();
+                Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
                 Transaction transaction = session.beginTransaction();
                 Criteria criteria = session.createCriteria(User.class);
                 if (!user.getFrom().equals("")) {

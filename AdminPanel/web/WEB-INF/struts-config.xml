@@ -30,7 +30,7 @@
                 scope="request"
                 parameter="allRecords"
                 name="Records">
-            <forward name = "listRecord" path="/records/listRecords.jsp" />
+            <forward name = "successful" path="/records/listRecords.jsp" />
         </action>
         <action path="/protected/stopHib"
                 type="panel.settings.StopHibernate"
@@ -65,4 +65,5 @@
 
 
     </action-mappings>
+    <plug-in className="hibernateServise.HibernatePlugin"/>
 </struts-config>
