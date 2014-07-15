@@ -14,7 +14,7 @@
     document.write(' <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>')
     document.write(' <div class="menuBlock"><a href="${pageContext.request.contextPath}/driver.do"><img src="images/iDriver.png"></a></div>')
     document.write(' <div class="menuBlock"><a href="${pageContext.request.contextPath}/passenger.do"><img src="images/iPassenger.png"></a></div>')
-    document.write(' <div class="information"><a href="#">О проекте</a></div>')
+    document.write(' <div class="information"><a href="${pageContext.request.contextPath}/aboutProject.do">О проекте</a></div>')
     document.write(' </div>')
     document.write(' <div id="bottomRectangle"></div>')
     document.write(' </div>')
