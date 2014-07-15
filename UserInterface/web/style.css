@@ -123,3 +123,16 @@ a{
     border-right: #d2d2d2 2px solid;
     border-bottom: #d2d2d2 2px solid;
 }
+
+.documentation{
+    background:white;
+    width:90%;
+    margin:0 auto 0;
+    padding: 20px;
+    border-radius:5px;
+
+}
+
+.documentation p{
+    margin:0 0 15px;
+}

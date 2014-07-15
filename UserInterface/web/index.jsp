@@ -13,10 +13,4 @@
             <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
             <div class="menuBlock"><a href="${pageContext.request.contextPath}/driver.do"><img src="images/iDriver.png"></a></div>
             <div class="menuBlock"><a href="${pageContext.request.contextPath}/passenger.do"><img src="images/iPassenger.png"></a></div>
-            <div class="information"><a href="#">О проекте</a></div>
-        </div>
-        <div id="bottomRectangle"></div>
-    </div>
-</div>
-</body>
-</html>
+<%@include file="DriverAndPassengerPage/footer.jsp" %>

@@ -93,16 +93,10 @@
 
                     <p class="agreement">
                         <input type="checkbox" id="agree" name="agree" onclick="checkPassengerForm('from','where','date','month','agree','button')"  >
-                        <a href="#">Принимаю условия соглашения</a>
+                        <a href="${pageContext.request.contextPath}/agreement.do">Принимаю условия соглашения</a>
                     </p>
                     <input id="button" type="button" class="textInput" value="Поехали" disabled="disabled" onclick="postAjax('${pageContext.request.contextPath}/getRecords.do',document.forms[0],'serverAnswer')">
                 </form>
                 <div id="serverAnswer"></div>
-                <div class="information"><a href="#">О проекте</a></div>
             </div>
-        </div>
-        <div id="bottomRectangle"></div>
-    </div>
-</div>
-</body>
-</html>
+<%@include file="DriverAndPassengerPage/footer.jsp" %>

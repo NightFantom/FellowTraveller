@@ -98,19 +98,11 @@
                     <p class="agreement">
 
                         <input id="agree" type="checkbox" name="agree" onclick="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"  >
-                        <a href="#">Принимаю условия соглашения</a></p>
+                        <a href="${pageContext.request.contextPath}/agreement.do">Принимаю условия соглашения</a></p>
 
                     <input id="button" type="button" class="textInput" value="Поехали" disabled="disabled"
                            onclick="postAjax('${pageContext.request.contextPath}/save.do',document.forms[0],'serverAnswer')">
                 </form>
                 <div id="serverAnswer"></div>
-                <div class="information"><a href="#">О проекте</a></div>
             </div>
-        </div>
-
-        <div id="bottomRectangle"></div>
-    </div>
-</div>
-
-</body>
-</html>
+<%@include file="DriverAndPassengerPage/footer.jsp" %>

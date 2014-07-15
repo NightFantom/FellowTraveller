@@ -29,6 +29,10 @@
                 forward="/driver.jsp"/>
         <action path="/passenger"
                 forward="/passenger.jsp"/>
+        <action path="/aboutProject"
+                forward="/aboutProject.jsp"/>
+        <action path="/agreement"
+                forward="/agreement.jsp"/>
     </action-mappings>
     <plug-in className="hibernateServise.HibernatePlugin"/>
 </struts-config>

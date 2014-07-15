@@ -103,7 +103,7 @@ function driverFormIsCorrect(fromId, whereId, dateId, monthId, agreeId, vkIdId, 
     var vkId = document.getElementById(vkIdId);
     var comment = document.getElementById(commentId);
     if (recordIsCorrect(from.value) && recordIsCorrect(where.value) && dateIsCorrect(parseInt(date.value), parseInt(month.value))
-        && recordVKidIsCorrect(vkId.value) && doesNotExceed(comment.value, 250) && isCoincides(agree.value, 'true')) {
+        && recordVKidIsCorrect(vkId.value) && doesNotExceed(comment.value, 100) && isCoincides(agree.value, 'true')) {
         return true;
     }
     return false;
