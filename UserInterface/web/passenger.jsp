@@ -25,12 +25,16 @@
                     <p>Откуда <input id="from" class="textInput" type="text" name="from"
                                      onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
                                      onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
-                                     onchange="checkPassengerForm('from','where','date','month','agree','button')"> </p>
+                                     onchange="checkPassengerForm('from','where','date','month','agree','button')"
+                                     placeholder="Город отправления"
+                                     maxlength="25"> </p>
 
                     <p>Куда <input id="where" class="textInput" type="text" name="where"
                                    onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
                                    onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
-                                   onchange="checkPassengerForm('from','where','date','month','agree','button')"></p>
+                                   onchange="checkPassengerForm('from','where','date','month','agree','button')"
+                                   placeholder="Город прибытия"
+                                   maxlength="25"></p>
 
                     <p>Когда
                         <select class="date" name="day" id="date"

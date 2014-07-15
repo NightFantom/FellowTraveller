@@ -35,6 +35,11 @@ function getRequestBody(oForm) {
     }
     return aParams.join("&");
 }
+
+function time(id){
+    document.getElementById(id).innerHTML = "";
+}
+
 /**
  * функция отправки формы и получения ответа от сервера
  * @param url адрес запроса
@@ -53,6 +58,7 @@ function postAjax(url, oForm, id) {
                 document.getElementById(id).innerHTML = oXmlHttp.responseText;
             } else {
                 document.getElementById(id).innerHTML = "ajax error";
+                setTimeout('document.getElementById(id).innerHTML = "";',5000);
             }
         }
     };

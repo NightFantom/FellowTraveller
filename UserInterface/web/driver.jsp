@@ -22,12 +22,16 @@
                     <p>Откуда <input class="textInput" type="text" name="from" id="from"
                                      onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                      onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
-                                     onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"></p>
+                                     onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
+                                     placeholder="Город отправления"
+                                     maxlength="25"> </p>
 
                     <p>Куда <input class="textInput" type="text" name="where" id="where"
                                    onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                    onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
-                                   onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"></p>
+                                   onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
+                                   placeholder="Город прибытия"
+                                   maxlength="25"></p>
 
                     <p>Когда
                         <select class="date" name="day" id="date"
@@ -88,12 +92,16 @@
                     <p>Страница в ВК <input class="textInput" type="text" name="vkId" id="vkId"
                                             onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                             onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
-                                            onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"></p>
+                                            onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
+                                            placeholder="vk.com/..."
+                                            maxlength="25"></p>
 
                     <p>Комментарий <textarea name="comment" id="comment" maxlength="250"
                                              onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                              onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
-                                             onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"></textarea></p>
+                                             onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
+                                             placeholder="Ваш комментарий"
+                                             maxlength="100"></textarea></p>
 
                     <p class="agreement">
 
