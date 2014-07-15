@@ -135,7 +135,7 @@ public class DispatchRecords extends DispatchAction {
             try {
                 Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
                 session.beginTransaction();
-                session.save("routebuf", user);
+                session.save(BUF_TABLE, user);
                 session.getTransaction().commit();
             } catch (Exception e) {
                 throw e;
@@ -169,7 +169,7 @@ public class DispatchRecords extends DispatchAction {
             try {
                 Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
                 Transaction transaction = session.beginTransaction();
-                Criteria criteria = session.createCriteria(User.class);
+                Criteria criteria = session.createCriteria(TABLE);
                 if (!user.getFrom().equals("")) {
                     criteria.add(Restrictions.like("from", user.getFrom()));
                 }
