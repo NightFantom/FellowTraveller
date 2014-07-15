@@ -6,17 +6,22 @@
     <title>Поиск попутчиков</title>
 </head>
 <body>
-<div id = "basis">
-    <div id = "mainMenu">
-        <div id="topRectangle"></div>
-        <div id="center">
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}/driver.do"><img src="images/iDriver.png"></a></div>
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}/passenger.do"><img src="images/iPassenger.png"></a></div>
-            <div class="information"><a href="#">О проекте</a></div>
-        </div>
-        <div id="bottomRectangle"></div>
-    </div>
-</div>
+<script type="text/javascript">
+    document.write(' <div id = "basis">')
+    document.write(' <div id = "mainMenu">')
+    document.write(' <div id="topRectangle"></div>')
+    document.write(' <div id="center">')
+    document.write(' <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>')
+    document.write(' <div class="menuBlock"><a href="${pageContext.request.contextPath}/driver.do"><img src="images/iDriver.png"></a></div>')
+    document.write(' <div class="menuBlock"><a href="${pageContext.request.contextPath}/passenger.do"><img src="images/iPassenger.png"></a></div>')
+    document.write(' <div class="information"><a href="#">О проекте</a></div>')
+    document.write(' </div>')
+    document.write(' <div id="bottomRectangle"></div>')
+    document.write(' </div>')
+    document.write(' </div>')
+
+</script>
+<noscript><span>У Вас отключён JavaScript...</span></noscript>
+
 </body>
 </html>
