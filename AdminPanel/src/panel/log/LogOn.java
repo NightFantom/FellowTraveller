@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
 public class LogOn extends BaseAction {
 
     private static final String  FORWARD = "successful";
-    private static final String  name = "admin";
-    private static final String  password = "admin";
+    private static final String  name = "adminMan";
+    private static final String  password = "citylife";
 
     @Override
     /**
