@@ -25,6 +25,8 @@
             <forward name="listRecords" path="/jsp/getRoutes.jsp"/>
             <forward name="error" path="/error.jsp"/>
         </action>
+        <action path="/index"
+                forward="/index.jsp"/>
         <action path="/driver"
                 forward="/driver.jsp"/>
         <action path="/passenger"
