@@ -19,7 +19,7 @@ public class CreateTable extends BaseAction{
 
     private static final String URL = "jdbc:mysql://localhost:3306/fellowtraveller?useUnicode=true&characterEncoding=utf-8";
     private static final String LOGIN = "root";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "whitesnow";
     private static final String FORWARD_SETTINGS = "settings";
 
     /**
