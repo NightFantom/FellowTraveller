@@ -147,3 +147,8 @@ a{
 .documentation p{
     margin:0 0 15px;
 }
+
+.smallText{
+    text-size:12pt;
+    color: black;
+}

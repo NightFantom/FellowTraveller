@@ -16,24 +16,24 @@
     <div id="mainMenu">
         <div id="topRectangle"></div>
         <div id="center">
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
+            <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a></div>
             <div class="form">
                 <form>
-                    <p>Откуда <input class="textInput" type="text" name="from" id="from"
+                    <p>Откуда* <input class="textInput" type="text" name="from" id="from"
                                      onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                      onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                      onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                      placeholder="Город отправления"
                                      maxlength="25"> </p>
 
-                    <p>Куда <input class="textInput" type="text" name="where" id="where"
+                    <p>Куда* <input class="textInput" type="text" name="where" id="where"
                                    onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                    onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                    onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                    placeholder="Город прибытия"
                                    maxlength="25"></p>
 
-                    <p>Когда
+                    <p>Когда*
                         <select class="date" name="day" id="date"
                                 onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                 onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
@@ -89,7 +89,7 @@
                         </select>
                     </p>
 
-                    <p>Страница в ВК <input class="textInput" type="text" name="vkId" id="vkId"
+                    <p>Страница в ВК* <input class="textInput" type="text" name="vkId" id="vkId"
                                             onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                             onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                             onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
@@ -106,11 +106,12 @@
                     <p class="agreement">
 
                         <input id="agree" type="checkbox" name="agree" onclick="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"  >
-                        <a href="${pageContext.request.contextPath}/agreement.do">Принимаю условия соглашения</a></p>
+                        <a href="${pageContext.request.contextPath}/agreement.do">Принимаю условия соглашения*</a></p>
 
                     <input id="button" type="button" class="textInput" value="Поехали" disabled="disabled"
                            onclick="postAjax('${pageContext.request.contextPath}/save.do',document.forms[0],'serverAnswer')">
                 </form>
+                <p style="font-size: 12pt; color: black;">* - поля обязательные для заполнения</p>
                 <div id="serverAnswer"></div>
             </div>
-<%@include file="DriverAndPassengerPage/footer.jsp" %>
+            <%@include file="DriverAndPassengerPage/footer.jsp" %>

@@ -19,24 +19,24 @@
     <div id="mainMenu">
         <div id="topRectangle"></div>
         <div id="center">
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
+            <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a></div>
             <div class="form">
                 <form>
-                    <p>Откуда <input id="from" class="textInput" type="text" name="from"
+                    <p>Откуда* <input id="from" class="textInput" type="text" name="from"
                                      onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
                                      onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
                                      onchange="checkPassengerForm('from','where','date','month','agree','button')"
                                      placeholder="Город отправления"
                                      maxlength="25"> </p>
 
-                    <p>Куда <input id="where" class="textInput" type="text" name="where"
+                    <p>Куда* <input id="where" class="textInput" type="text" name="where"
                                    onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
                                    onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
                                    onchange="checkPassengerForm('from','where','date','month','agree','button')"
                                    placeholder="Город прибытия"
                                    maxlength="25"></p>
 
-                    <p>Когда
+                    <p>Когда*
                         <select class="date" name="day" id="date"
                                 onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
                                 onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
@@ -97,10 +97,11 @@
 
                     <p class="agreement">
                         <input type="checkbox" id="agree" name="agree" onclick="checkPassengerForm('from','where','date','month','agree','button')"  >
-                        <a href="${pageContext.request.contextPath}/agreement.do">Принимаю условия соглашения</a>
+                        <a href="${pageContext.request.contextPath}/agreement.do">Принимаю условия соглашения*</a>
                     </p>
                     <input id="button" type="button" class="textInput" value="Поехали" disabled="disabled" onclick="postAjax('${pageContext.request.contextPath}/getRecords.do',document.forms[0],'serverAnswer')">
                 </form>
+                <p style="font-size: 12pt; color: black;">* - поля обязательные для заполнения</p>
                 <div id="serverAnswer"></div>
             </div>
 <%@include file="DriverAndPassengerPage/footer.jsp" %>

@@ -16,20 +16,14 @@
     <div id="mainMenu">
         <div id="topRectangle"></div>
         <div id="center">
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
+            <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a></div>
             <div class="documentation">
                 <ol>
                     <li>Поездка проводиться БЕСПЛАТНО (т.е. без взымания денежных средств)!</li>
                     <li>Мы не несём никакой ответственности за действия пассажиров или водителей.</li>
-                    <li>Содясь в машину к незнакомому человеку, вы понимаете и берёте на себя весь риск.</li>
+                    <li>Садясь в машину к незнакомому человеку, вы понимаете и берёте на себя весь риск.</li>
                     <li>Если Ваши планы изменились, сразу же предупреждайте всех, с кем договаривались.</li>
-                    <li>Водитель и пассажир обязуются не оманывать и не "бросать" друг друга.</li>
+                    <li>Водитель и пассажир обязуются не обманывать и не "бросать" друг друга.</li>
                 </ol>
             </div>
-            <div class="information"><a href="${pageContext.request.contextPath}/aboutProject.do">О проекте</a></div>
-        </div>
-        <div id="bottomRectangle"></div>
-    </div>
-</div>
-</body>
-</html>
+            <%@include file="DriverAndPassengerPage/footer.jsp" %>

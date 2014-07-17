@@ -16,7 +16,7 @@
     <div id = "mainMenu">
         <div id="topRectangle"></div>
         <div id="center">
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}"><img src="images/logo.png"></a></div>
+            <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a></div>
             <div class="documentation">
                 <p>Здравствуйте! Мы команда молодых разработчиков, которая стремиться сделать наш мир лучше.</p>
                 <p>Цель нашего проекта "Попутчик" - сделать людей более общительными, отзывчивыми и бескорыстными.</p>
@@ -25,10 +25,4 @@
                     списываются и едут.</p>
                 <p> В замен пассажир может отблагодарить водителя хорошей беседой или чем-нибудь вкусненьким:)</p>
             </div>
-            <div class="information"><a href="${pageContext.request.contextPath}/aboutProject.do">О проекте</a></div>
-        </div>
-        <div id="bottomRectangle"></div>
-    </div>
-</div>
-</body>
-</html>
+            <%@include file="DriverAndPassengerPage/footer.jsp" %>
