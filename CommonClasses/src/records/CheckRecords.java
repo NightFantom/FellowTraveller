@@ -37,7 +37,7 @@ public class CheckRecords {
      * @return boolean
      */
     private static boolean recordIsCorrect(String s) {
-        if (!s.equals("") && s != null && isConsistOfRussianLetters(s)) {
+        if (!s.equals("") && s != null ) {
             return true;
         }
         return false;

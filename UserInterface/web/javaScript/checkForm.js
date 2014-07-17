@@ -17,7 +17,7 @@ function isConsistOfRussianLetters(s) {
 }
 
 function recordIsCorrect(s) {
-    if (s != "" && s != null && isConsistOfRussianLetters(s)) {
+    if (s != "" && s != null) {
         return true;
     }
     return false;
