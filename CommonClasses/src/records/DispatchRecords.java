@@ -23,7 +23,7 @@ public class DispatchRecords extends DispatchAction {
     public static final String FORWARD_EMPTY_RECORD = "emptyRecord";
     public static final String FORWARD_SAVE_RECORD = "successful";
     public static final String FORWARD_ERROR = "error";
-    private  static final String BUF_TABLE = "routebuf";
+    private  static final String BUF_TABLE = "route";
     private  static final String TABLE = "route";
 
     @Override
