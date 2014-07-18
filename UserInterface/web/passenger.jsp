@@ -102,6 +102,6 @@
                     <input id="button" type="button" class="textInput" value="Поехали" disabled="disabled" onclick="postAjax('${pageContext.request.contextPath}/getRecords.do',document.forms[0],'serverAnswer')">
                 </form>
                 <p style="font-size: 12pt; color: black;">* - поля обязательные для заполнения</p>
-                <div id="serverAnswer"></div>
+                <div id="serverAnswer" onchange="check()"></div>
             </div>
 <%@include file="DriverAndPassengerPage/footer.jsp" %>

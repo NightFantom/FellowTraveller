@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DispatchRecords extends DispatchAction {
     public static final String FORWARD_NEW_RECORDS = "newRecords";
     public static final String FORWARD_LIST_RECORDS = "listRecords";
+    public static final String FORWARD_EMPTY_RECORD = "emptyRecord";
     public static final String FORWARD_SAVE_RECORD = "successful";
     public static final String FORWARD_ERROR = "error";
     private  static final String BUF_TABLE = "route";
@@ -184,8 +185,12 @@ public class DispatchRecords extends DispatchAction {
                 if (month != null && month.compareTo(new Integer(0)) != 0) {
                     criteria.add(Restrictions.like("month", user.getMonth()));
                 }
+                if(criteria.list().size()==0){
+                    return mapping.findForward(FORWARD_EMPTY_RECORD);
+                }
                 routesForm.setUsers(criteria.list());
                 transaction.commit();
+
             } catch (Exception e) {
                 throw e;
             }
