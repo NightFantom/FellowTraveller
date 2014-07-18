@@ -4,8 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:choose>
-    <c:when test="true">
     <table class="tableRecords">
         <tr class="tableHeader">
             <td class="place">Откуда</td>
@@ -26,8 +24,3 @@
             </tr>
         </logic:iterate>
     </table>
-    </c:when>
-    <c:otherwise>
-        <p>Ничего не найдено</p>
-    </c:otherwise>
-</c:choose>
