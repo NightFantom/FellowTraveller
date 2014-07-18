@@ -55,7 +55,7 @@ function postAjax(url, oForm, id) {
     oXmlHttp.onreadystatechange = function () {
         if (oXmlHttp.readyState == 4) {
             if (oXmlHttp.status == 200) {
-                document.getElementById(id).innerHTML = oXmlHttp.responseText;
+               document.getElementById(id).innerHTML = oXmlHttp.responseText;
             } else {
                 document.getElementById(id).innerHTML = "ajax error";
                 setTimeout('document.getElementById(id).innerHTML = "";',5000);

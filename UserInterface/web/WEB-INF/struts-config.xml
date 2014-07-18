@@ -24,6 +24,7 @@
                 scope="request">
             <forward name="listRecords" path="/jsp/getRoutes.jsp"/>
             <forward name="error" path="/error.jsp"/>
+            <forward name="emptyRecord" path="/emptyList.jsp"/>
         </action>
         <action path="/index"
                 forward="/index.jsp"/>
