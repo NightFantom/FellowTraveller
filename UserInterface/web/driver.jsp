@@ -96,12 +96,12 @@
                                             placeholder="vk.com/..."
                                             maxlength="25"></p>
 
-                    <p>Комментарий <textarea name="comment" id="comment" maxlength="250"
+                    <p>Комментарий <textarea name="comment" id="comment"
                                              onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                              onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                              onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button')"
                                              placeholder="Ваш комментарий"
-                                             maxlength="100"></textarea></p>
+                                             maxlength="1000"></textarea></p>
 
                     <p class="agreement">
 

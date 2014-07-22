@@ -134,7 +134,7 @@ public class CheckRecords {
 
     public static boolean driverFormIsCorrect(User form) {
         if (recordIsCorrect(form.getFrom()) && recordIsCorrect(form.getWhere()) && dateIsCorrect(form.getDay(), form.getMonth())
-                && recordVKidIsCorrect(form.getVkId()) && doesNotExceed(form.getComment(), 100) && isCoincides(form.getAgree(), "true")) {
+                && recordVKidIsCorrect(form.getVkId()) && doesNotExceed(form.getComment(), 1000) && isCoincides(form.getAgree(), "true")) {
             return true;
         }
         return false;
