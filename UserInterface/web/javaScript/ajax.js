@@ -36,7 +36,7 @@ function getRequestBody(oForm) {
     return aParams.join("&");
 }
 
-function time(id){
+function time(id) {
     document.getElementById(id).innerHTML = "";
 }
 
@@ -53,16 +53,11 @@ function postAjax(url, oForm, id) {
     oXmlHttp.open("POST", url, true);
     oXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     oXmlHttp.onreadystatechange = function () {
-        if (oXmlHttp.readyState == 4) {
-            if (oXmlHttp.status == 200) {
-               document.getElementById(id).innerHTML = oXmlHttp.responseText;
-            } else {
-                document.getElementById(id).innerHTML = "ajax error";
-                setTimeout('document.getElementById(id).innerHTML = "";',5000);
-            }
+        if (oXmlHttp.status == 200 && oXmlHttp.readyState == 4) {             // Если все ок, то выдаем ответ сервера
+            document.getElementById(id).innerHTML = oXmlHttp.responseText;
+        } else {
+            document.getElementById(id).innerHTML = "ajax error";
         }
     };
     oXmlHttp.send(sBody);
-
-
 }
