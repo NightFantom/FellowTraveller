@@ -24,6 +24,7 @@
                 parameter="start"
                 name="Logon">
                 <forward name = "successful" path="/panel.jsp" />
+                <forward name = "error" path="/error.jsp" />
         </action>
         <action path="/protected/getallrecords"
                 type="records.DispatchRecords"

@@ -1,16 +1,23 @@
-﻿<%--
-  Created by IntelliJ IDEA.
-  User: Денис
-  Date: 28.04.14
-  Time: 21:07
-  To change this template use File | Settings | File Templates.
---%>
+﻿<%-- Created by IntelliJ IDEA. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Страница ошибки</title>
+    <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
+    <title>Админ панель</title>
 </head>
 <body>
-    Страница ошибки
+<div align = "center">
+    <p>Возникла ошибка! Это может быть неверный Логин или Пароль или nullpointer</p>
+    <div id = "Logon" >
+        <form action="${pageContext.request.contextPath}/logon.do" method="post">
+            <p>Логин</p>
+            <input type="text" name="name">
+            <p>Пароль</p>
+            <input type="password" name="password">
+            <input type="submit" value="Войти">
+        </form>
+    </div>
+</div>
+
 </body>
 </html>
