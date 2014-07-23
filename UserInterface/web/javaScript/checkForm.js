@@ -42,32 +42,35 @@ function dateIsCorrect(day, month) {
             case 8:
             case 10:
             case 12:
-                if (1 <= day && day <= 31) {
-                    return true;
-                } else if (day == null) {
-                    day = 0;
-                    return true;
-                }
-                return false;
+//                if (1 <= day && day <= 31) {
+//                    return true;
+//                } else if (day == null) {
+//                    day = 0;
+//                    return true;
+//                }
+                //return false;
+                return true;
             case 4:
             case 6:
             case 9:
             case 11:
-                if (1 <= day && day <= 30) {
-                    return true;
-                } else if (day == null) {
-                    day = 0;
-                    return true;
-                }
-                return false;
+//                if (1 <= day && day <= 30) {
+//                    return true;
+//                } else if (day == null) {
+//                    day = 0;
+//                    return true;
+//                }
+//                return false;
+                return true;
             case 2:
-                if (1 <= day && day <= 28) {
-                    return true;
-                } else if (day == null) {
-                    day = 0;
-                    return true;
-                }
-                return false;
+//                if (1 <= day && day <= 28) {
+//                    return true;
+//                } else if (day == null) {
+//                    day = 0;
+//                    return true;
+//                }
+//                return false;
+                return true;
             default:
                 return false;
         }
