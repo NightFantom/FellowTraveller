@@ -52,7 +52,6 @@ public class CheckRecords {
      */
     private static boolean dateIsCorrect(Integer day, Integer month) {
         if (day != null && month != null) {
-            if (1 <= day && day <= 31) {
                 switch (month) {
                     case 1:
                     case 3:
@@ -61,7 +60,7 @@ public class CheckRecords {
                     case 8:
                     case 10:
                     case 12:
-                        if (1 <= day && day <= 31) {
+                        if (0 <= day && day <= 31) {
                             return true;
                         }
                         return false;
@@ -69,20 +68,18 @@ public class CheckRecords {
                     case 6:
                     case 9:
                     case 11:
-                        if (1 <= day && day <= 30) {
+                        if (0 <= day && day <= 30) {
                             return true;
                         }
                         return false;
                     case 2:
-                        if (1 <= day && day <= 28) {
+                        if (0 <= day && day <= 28) {
                             return true;
                         }
                         return false;
                     default:
                         return false;
                 }
-
-            }
         }
         return false;
     }
