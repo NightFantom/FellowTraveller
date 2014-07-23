@@ -26,4 +26,4 @@
                     <li>Водитель и пассажир обязуются не обманывать и не "бросать" друг друга.</li>
                 </ol>
             </div>
-            <%@include file="DriverAndPassengerPage/footer.jsp" %>
+            <%@include file="footer.jsp" %>

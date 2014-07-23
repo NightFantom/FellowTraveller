@@ -6,7 +6,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
-    <%@include file="DriverAndPassengerPage/header.jsp" %>
+    <%@include file="header.jsp" %>
     <script type="text/javascript" src="javaScript/ajax.js"></script>
     <script type="text/javascript" src="javaScript/checkForm.js"></script>
     <title>Я водитель</title>
@@ -33,11 +33,32 @@
                                    placeholder="Город прибытия"
                                    maxlength="25"></p>
 
-                    <p>Когда*
+                    <p>Месяц*
+                        <select class="date" name="month" id="month"
+                                onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
+                                onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
+                                onchange="checkPassengerForm('from','where','date','month','agree','button')">
+                            <option selected value="0"></option>
+                            <option value="1">Янв</option>
+                            <option value="2">Фев</option>
+                            <option value="3">Март</option>
+                            <option value="4">Апр</option>
+                            <option value="5">Май</option>
+                            <option value="6">Июн</option>
+                            <option value="7">Июл</option>
+                            <option value="8">Авг</option>
+                            <option value="9">Сен</option>
+                            <option value="10">Окт</option>
+                            <option value="11">Ноя</option>
+                            <option value="12">Дек</option>
+                        </select>
+                    </p>
+                    <p>День
                         <select class="date" name="day" id="date"
-                                onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')">
+                                onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
+                                onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
+                                onchange="checkPassengerForm('from','where','date','month','agree','button')">
+                            <option selected value="0"></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -70,23 +91,6 @@
                             <option value="30">30</option>
                             <option value="31">31</option>
                         </select>
-                        <select class="date" name="month" id="month"
-                                onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')">
-                            <option value="1">Янв</option>
-                            <option value="2">Фев</option>
-                            <option value="3">Март</option>
-                            <option value="4">Апр</option>
-                            <option value="5">Май</option>
-                            <option value="6">Июн</option>
-                            <option value="7">Июл</option>
-                            <option value="8">Авг</option>
-                            <option value="9">Сен</option>
-                            <option value="10">Окт</option>
-                            <option value="11">Ноя</option>
-                            <option value="12">Дек</option>
-                        </select>
                     </p>
 
                     <p>Страница в ВК* <input class="textInput" type="text" name="vkId" id="vkId"
@@ -102,9 +106,7 @@
                                              onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
                                              placeholder="Ваш комментарий"
                                              maxlength="1000"
-                                             onkeydown="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')">
-
-                                             </textarea></p>
+                                             onkeydown="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"></textarea></p>
                     <p id="commentMessage"> </p>
 
                   <p class="agreement">
@@ -118,4 +120,4 @@
                 <p style="font-size: 12pt; color: black;">* - поля обязательные для заполнения</p>
                 <div id="serverAnswer"></div>
             </div>
-            <%@include file="DriverAndPassengerPage/footer.jsp" %>
+            <%@include file="footer.jsp" %>
