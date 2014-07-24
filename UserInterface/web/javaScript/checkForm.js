@@ -119,7 +119,7 @@ function isCoincides(s, expectedValue) {
  */
 function showNumberCharacters(commentField, idMessage) {
 
-    var i = 99 - commentField.value.length;
+    var i = 100 - commentField.value.length;
     if (i <= 30) {
         idMessage.innerHTML = "Осталось " + i + " символов";
     } else if (30 < i && i <= 100) {
