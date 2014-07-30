@@ -5,10 +5,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +20,8 @@ public class DispatchRecords extends DispatchAction {
     public static final String FORWARD_EMPTY_RECORD = "emptyRecord";
     public static final String FORWARD_SAVE_RECORD = "successful";
     public static final String FORWARD_ERROR = "error";
-    private  static final String BUF_TABLE = "route";
-    private  static final String TABLE = "route";
+    private static final String BUF_TABLE = "route";
+    private static final String TABLE = "route";
 
     @Override
     protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
@@ -33,6 +30,7 @@ public class DispatchRecords extends DispatchAction {
 
     /**
      * Метод удаляет запись из БД
+     *
      * @param mapping
      * @param form
      * @param request
@@ -45,18 +43,22 @@ public class DispatchRecords extends DispatchAction {
         User user = new User();
         user.setId(routesForm.getId());
         String table = request.getParameter("table");
+        Transaction transaction = null;
         try {
             Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
-            session.beginTransaction();
-            session.delete(table,user);
+            transaction = session.beginTransaction();
+            session.delete(table, user);
             routesForm.setUsers(session.createCriteria(table).list());
-            session.getTransaction().commit();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            throw e;
         } catch (Exception e) {
             throw e;
         }
-        if (table.equals(TABLE)){
+        if (table.equals(TABLE)) {
             return mapping.findForward(FORWARD_LIST_RECORDS);
-        }else {
+        } else {
             return mapping.findForward(FORWARD_NEW_RECORDS);
         }
     }
@@ -78,8 +80,8 @@ public class DispatchRecords extends DispatchAction {
         try {
             Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
             session.beginTransaction();
-            user = (User) session.load(BUF_TABLE,user.getId());
-            session.delete(BUF_TABLE,user);
+            user = (User) session.load(BUF_TABLE, user.getId());
+            session.delete(BUF_TABLE, user);
             session.save(TABLE, user);
             routesForm.setUsers(session.createCriteria(BUF_TABLE).list());
             session.getTransaction().commit();
@@ -102,18 +104,22 @@ public class DispatchRecords extends DispatchAction {
      */
     public ActionForward allRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
-        String table = (String)request.getParameter("table");
+        String table = (String) request.getParameter("table");
+        Transaction transaction = null;
         try {
             Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             routesForm.setUsers(session.createCriteria(table).list());
-            session.getTransaction().commit();
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            throw e;
         } catch (Exception e) {
             throw e;
         }
-        if (table.equals(TABLE)){
+        if (table.equals(TABLE)) {
             return mapping.findForward(FORWARD_LIST_RECORDS);
-        }else {
+        } else {
             return mapping.findForward(FORWARD_NEW_RECORDS);
         }
 
@@ -133,11 +139,16 @@ public class DispatchRecords extends DispatchAction {
         User user = (User) form;
         user.setMail("");
         if (user != null && CheckRecords.driverFormIsCorrect(user)) {
+            Transaction transaction = null;
             try {
                 Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
-                session.beginTransaction();
+                transaction = session.beginTransaction();
                 session.save(BUF_TABLE, user);
-                session.getTransaction().commit();
+                transaction.commit();
+            } catch (HibernateException e) {
+                transaction.rollback();
+                throw e;
+
             } catch (Exception e) {
                 throw e;
             }
@@ -167,9 +178,10 @@ public class DispatchRecords extends DispatchAction {
         user.setMonth(routesForm.getMonth());
         user.setAgree(routesForm.getAgree());
         if (user != null && CheckRecords.passengerFormIsCorrect(user)) {
+            Transaction transaction = null;
             try {
                 Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
-                Transaction transaction = session.beginTransaction();
+                transaction = session.beginTransaction();
                 Criteria criteria = session.createCriteria(TABLE);
                 if (!user.getFrom().equals("")) {
                     criteria.add(Restrictions.like("from", user.getFrom()));
@@ -185,11 +197,15 @@ public class DispatchRecords extends DispatchAction {
                 if (month != null && month.compareTo(new Integer(0)) != 0) {
                     criteria.add(Restrictions.like("month", user.getMonth()));
                 }
-                if(criteria.list().size()==0){
+                if (criteria.list().size() == 0) {
                     return mapping.findForward(FORWARD_EMPTY_RECORD);
                 }
                 routesForm.setUsers(criteria.list());
                 transaction.commit();
+
+            } catch (HibernateException e) {
+                transaction.rollback();
+                throw e;
 
             } catch (Exception e) {
                 throw e;

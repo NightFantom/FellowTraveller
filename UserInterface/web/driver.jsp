@@ -58,7 +58,7 @@
                                 onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
                                 onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
                                 onchange="checkPassengerForm('from','where','date','month','agree','button')">
-                            <option selected value="0"></option>
+                            <option selected value="0">Любой</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -105,7 +105,7 @@
                                              onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
                                              onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
                                              placeholder="Ваш комментарий"
-                                             maxlength="1000"
+                                             maxlength="100"
                                              onkeydown="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"></textarea></p>
                     <p id="commentMessage"> </p>
 

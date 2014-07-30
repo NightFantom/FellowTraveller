@@ -95,7 +95,7 @@ a{
     margin:0 20px 0 0;
 }
 .tableRecords{
-    width: 100%;
+    width:90%;
     text-align:center;
     margin: 10px 0 0;
     border-spacing:0;
@@ -152,3 +152,4 @@ a{
     text-size:12pt;
     color: black;
 }
+

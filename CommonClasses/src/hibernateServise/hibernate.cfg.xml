@@ -18,6 +18,11 @@
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
 
+        <!-- Connection auto reconnect after long inactivity -->
+        <property name="connection.autoReconnect">true</property>
+        <property name="connection.autoReconnectForPools">true</property>
+        <property name="connection.is-connection-validation-required">true</property>
+
         <mapping resource="hibernateServise/User.hbm.xml"/>
     </session-factory>
 
