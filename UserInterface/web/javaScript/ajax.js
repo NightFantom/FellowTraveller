@@ -36,8 +36,16 @@ function getRequestBody(oForm) {
     return aParams.join("&");
 }
 
-function time(id) {
-    document.getElementById(id).innerHTML = "";
+function startFading(){ //Начать угасание
+    while(document.getElementById('routeAdd').style.opacity!= 0){
+        setTimeout("document.getElementById('routeAdd').style.opacity -= 0.1 ",200);
+    }
+    document.getElementById('routeAdd').innerHTML='';
+}
+
+function startTimer() { // Старт таймера
+    document.getElementById('routeAdd').style.opacity = 1;
+    setTimeout(startFading,3000)
 }
 
 /**
@@ -55,6 +63,7 @@ function postAjax(url, oForm, id) {
     oXmlHttp.onreadystatechange = function () {
         if (oXmlHttp.status == 200 && oXmlHttp.readyState == 4) {             // Если все ок, то выдаем ответ сервера
             document.getElementById(id).innerHTML = oXmlHttp.responseText;
+            startTimer();
         } else {
             document.getElementById(id).innerHTML = "ajax error";
         }

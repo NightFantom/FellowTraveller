@@ -42,35 +42,24 @@ function dateIsCorrect(day, month) {
             case 8:
             case 10:
             case 12:
-//                if (1 <= day && day <= 31) {
-//                    return true;
-//                } else if (day == null) {
-//                    day = 0;
-//                    return true;
-//                }
-                //return false;
-                return true;
+                if (0 <= day && day <= 31) {
+                    return true;
+                }
+                return false;
             case 4:
             case 6:
             case 9:
             case 11:
-//                if (1 <= day && day <= 30) {
-//                    return true;
-//                } else if (day == null) {
-//                    day = 0;
-//                    return true;
-//                }
-//                return false;
-                return true;
+                if (0 <= day && day <= 30) {
+                    return true;
+                }
+
+                return false;
             case 2:
-//                if (1 <= day && day <= 28) {
-//                    return true;
-//                } else if (day == null) {
-//                    day = 0;
-//                    return true;
-//                }
-//                return false;
-                return true;
+                if (0 <= day && day <= 28) {
+                    return true;
+                }
+                return false;
             default:
                 return false;
         }
@@ -167,7 +156,7 @@ function driverFormIsCorrect(fromId, whereId, dateId, monthId, agreeId, vkIdId, 
     var vkId = document.getElementById(vkIdId);
     var comment = document.getElementById(commentId);
     if (recordIsCorrect(from.value) && recordIsCorrect(where.value) && dateIsCorrect(parseInt(date.value), parseInt(month.value))
-        && recordVKidIsCorrect(vkId.value) && doesNotExceed(comment.value, 1000) && isCoincides(agree.value, 'true')) {
+        && recordVKidIsCorrect(vkId.value) && doesNotExceed(comment.value, 100) && isCoincides(agree.value, 'true')) {
         return true;
     }
     return false;
