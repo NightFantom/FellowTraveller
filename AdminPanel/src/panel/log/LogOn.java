@@ -30,7 +30,6 @@ public class LogOn extends BaseAction {
         if (logonData.getName().equals(name)  && logonData.getPassword().equals(password) ){
             String hash = KeyGen.generation();
             response.addCookie(new Cookie("l", hash));
-
             httpSession.setAttribute(hash, logonData.getName());
             return mapping.findForward(FORWARD);
         }
