@@ -1,16 +1,13 @@
 package records;
 
-import hibernateServiseUser.HibernateUtil;
-import hibernateServiseUser.RecordsForm;
-import hibernateServiseUser.User;
+import hibernateServise.*;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,18 +15,119 @@ import javax.servlet.http.HttpServletResponse;
  * Класс предназначен для возвращения маршрутов из БД
  */
 public class DispatchRecords extends DispatchAction {
-
-    public static final String FORWARD_LIST_RECORDS = "successful";
+    public static final String FORWARD_NEW_RECORDS = "newRecords";
+    public static final String FORWARD_LIST_RECORDS = "listRecords";
+    public static final String FORWARD_EMPTY_RECORD = "emptyRecord";
     public static final String FORWARD_SAVE_RECORD = "successful";
+    public static final String FORWARD_ERROR = "error";
+    private static final String BUF_TABLE = "route";
+    private static final String TABLE = "route";
 
     @Override
     protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response, String parameter) throws Exception {
         return parameter;
     }
 
+    /**
+     * Метод удаляет запись из БД
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward delete(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        RecordsForm routesForm = (RecordsForm) form;
+        User user = new User();
+        user.setId(routesForm.getId());
+        String table = request.getParameter("table");
+        Transaction transaction = null;
+        try {
+            Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
+            transaction = session.beginTransaction();
+            session.delete(table, user);
+            routesForm.setUsers(session.createCriteria(table).list());
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            throw e;
+        } catch (Exception e) {
+            throw e;
+        }
+        if (table.equals(TABLE)) {
+            return mapping.findForward(FORWARD_LIST_RECORDS);
+        } else {
+            return mapping.findForward(FORWARD_NEW_RECORDS);
+        }
+    }
 
     /**
-     * Метод заносит данные из формы в БД
+     * Метод переносит данные из буферной таблицы в исходную
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward approve(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        RecordsForm routesForm = (RecordsForm) form;
+        User user = new User();
+        user.setId(routesForm.getId());
+        try {
+            Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
+            session.beginTransaction();
+            user = (User) session.load(BUF_TABLE, user.getId());
+            session.delete(BUF_TABLE, user);
+            session.save(TABLE, user);
+            routesForm.setUsers(session.createCriteria(BUF_TABLE).list());
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            throw e;
+        }
+        return mapping.findForward(FORWARD_NEW_RECORDS);
+    }
+
+
+    /**
+     * Метод возвращает все записи
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward allRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        RecordsForm routesForm = (RecordsForm) form;
+        String table = (String) request.getParameter("table");
+        Transaction transaction = null;
+        try {
+            Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
+            transaction = session.beginTransaction();
+            routesForm.setUsers(session.createCriteria(table).list());
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            throw e;
+        } catch (Exception e) {
+            throw e;
+        }
+        if (table.equals(TABLE)) {
+            return mapping.findForward(FORWARD_LIST_RECORDS);
+        } else {
+            return mapping.findForward(FORWARD_NEW_RECORDS);
+        }
+
+    }
+
+    /**
+     * Метод сохраняет данные о маршруте
+     *
      * @param mapping
      * @param form
      * @param request
@@ -38,68 +136,84 @@ public class DispatchRecords extends DispatchAction {
      * @throws Exception
      */
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
         User user = (User) form;
         user.setMail("");
-/**
- * if(correct(user)){
- *   HibernateUtil hibernateUtil = new HibernateUtil();
-    try {
-        Session session = hibernateUtil.currentSession();
-         Transaction transaction = session.beginTransaction();
-         session.save(user);
-         session.getTransaction().commit();
-    } catch (Exception e) {
-        throw e;
-     } finally {
-        hibernateUtil.close();
- }else{
-     return mapping.findForward(Error);
- }
- * }
-  */
-        HibernateUtil hibernateUtil = new HibernateUtil();
-        try {
-            Session session = hibernateUtil.currentSession();
-            Transaction transaction = session.beginTransaction();
-            session.save(user);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            hibernateUtil.close();
-        }
-        return mapping.findForward(FORWARD_SAVE_RECORD);
+        if (user != null && CheckRecords.driverFormIsCorrect(user)) {
+            Transaction transaction = null;
+            try {
+                Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
+                transaction = session.beginTransaction();
+                session.save(BUF_TABLE, user);
+                transaction.commit();
+            } catch (HibernateException e) {
+                transaction.rollback();
+                throw e;
 
+            } catch (Exception e) {
+                throw e;
+            }
+            return mapping.findForward(FORWARD_SAVE_RECORD);
+        } else {
+            return mapping.findForward(FORWARD_ERROR);
+
+        }
     }
 
-
+    /**
+     * Метод получает все маршруты, соответствующие критериям из form
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         RecordsForm routesForm = (RecordsForm) form;
-        HibernateUtil hibernateUtil = new HibernateUtil();
-        try {
-            Session session = hibernateUtil.currentSession();
-            Criteria criteria = session.createCriteria(User.class);
-            if (!routesForm.getFrom().equals("")) {
-                criteria.add(Restrictions.like("from", routesForm.getFrom()));
+        User user = new User();
+        user.setFrom(routesForm.getFrom());
+        user.setWhere(routesForm.getWhere());
+        user.setDay(routesForm.getDay());
+        user.setMonth(routesForm.getMonth());
+        user.setAgree(routesForm.getAgree());
+        if (user != null && CheckRecords.passengerFormIsCorrect(user)) {
+            Transaction transaction = null;
+            try {
+                Session session = ((SessionFactory) servlet.getServletContext().getAttribute(HibernatePlugin.KEY_NAME)).getCurrentSession();
+                transaction = session.beginTransaction();
+                Criteria criteria = session.createCriteria(TABLE);
+                if (!user.getFrom().equals("")) {
+                    criteria.add(Restrictions.like("from", user.getFrom()));
+                }
+                if (!user.getWhere().equals("")) {
+                    criteria.add(Restrictions.like("where", user.getWhere()));
+                }
+                Integer day = user.getDay();
+                if (day != null && day.compareTo(new Integer(0)) != 0) {
+                    criteria.add(Restrictions.like("day", user.getDay()));
+                }
+                Integer month = user.getMonth();
+                if (month != null && month.compareTo(new Integer(0)) != 0) {
+                    criteria.add(Restrictions.like("month", user.getMonth()));
+                }
+                if (criteria.list().size() == 0) {
+                    return mapping.findForward(FORWARD_EMPTY_RECORD);
+                }
+                routesForm.setUsers(criteria.list());
+                transaction.commit();
+
+            } catch (HibernateException e) {
+                transaction.rollback();
+                throw e;
+
+            } catch (Exception e) {
+                throw e;
             }
-            if (!routesForm.getWhere().equals("")) {
-                criteria.add(Restrictions.like("where", routesForm.getWhere()));
-            }
-            Integer day = routesForm.getDay();
-            if (day != null && day.compareTo(new Integer(0)) != 0) {
-                criteria.add(Restrictions.like("day", routesForm.getDay()));
-            }
-            Integer month = routesForm.getMonth();
-            if (month != null && month.compareTo(new Integer(0)) != 0) {
-                criteria.add(Restrictions.like("month", routesForm.getMonth()));
-            }
-            routesForm.setUsers(criteria.list());
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            hibernateUtil.close();
+            return mapping.findForward(FORWARD_LIST_RECORDS);
+        } else {
+            return mapping.findForward(FORWARD_ERROR);
         }
-        return mapping.findForward(FORWARD_LIST_RECORDS);
+
     }
 }
