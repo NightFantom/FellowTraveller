@@ -28,10 +28,20 @@ function createXMLHttp() {
 function getRequestBody(oForm) {
     var aParams = new Array();
     for (var i = 0; i < oForm.elements.length; i++) {
-        var sParam = encodeURIComponent(oForm.elements[i].name);
-        sParam += "=";
-        sParam += encodeURIComponent(oForm.elements[i].value);
-        aParams.push(sParam);
+        var sParam;
+        if(oForm.elements[i].type == "radio"){
+            if(oForm.elements[i].checked){
+                sParam = encodeURIComponent(oForm.elements[i].name);
+                sParam += "=";
+                sParam += encodeURIComponent(oForm.elements[i].value);
+                aParams.push(sParam);
+            }
+        }else{
+            sParam = encodeURIComponent(oForm.elements[i].name);
+            sParam += "=";
+            sParam += encodeURIComponent(oForm.elements[i].value);
+            aParams.push(sParam);
+        }
     }
     return aParams.join("&");
 }
