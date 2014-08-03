@@ -4,28 +4,17 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="hibernateServise.User" table="route" entity-name="route">
-    <id column="id" name="id" type="integer">
-        <generator class="increment"/>
-    </id>
-    <property column="`from`" name="from" type="string"/>
-    <property column="`where`" name="where" type="string"/>
-    <property column="`day`" name="day" type="integer"/>
-    <property column="`month`" name="month" type="integer"/>
-    <property column="`mail`" name="mail" type="string"/>
-    <property column="`vkId`" name="vkId" type="string"/>
-    <property column="`comment`" name="comment" type="string"/>
-</class>
-    <class name="hibernateServise.User" table="routebuf" entity-name="routebuf">
+    <class name="hibernateServise.User" table="ways" entity-name="ways">
         <id column="id" name="id" type="integer">
             <generator class="increment"/>
         </id>
-        <property column="`from`" name="from" type="string"/>
-        <property column="`where`" name="where" type="string"/>
-        <property column="`day`" name="day" type="integer"/>
-        <property column="`month`" name="month" type="integer"/>
-        <property column="`mail`" name="mail" type="string"/>
-        <property column="`vkId`" name="vkId" type="string"/>
-        <property column="`comment`" name="comment" type="string"/>
+        <property column="startpoint" name="startpoint" type="string"/>
+        <property column="finishpoint" name="finishpoint" type="string"/>
+        <property column="intermediatepoints" name="intermediatepoints" type="string"/>
+        <property column="day" name="day" type="integer"/>
+        <property column="month" name="month" type="integer"/>
+        <property column="vkId" name="vkId" type="string"/>
+        <property column="information" name="information" type="string"/>
+        <property column="who" name="who" type="integer"/>
     </class>
 </hibernate-mapping>
