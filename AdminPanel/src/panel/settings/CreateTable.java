@@ -18,7 +18,7 @@ import java.sql.Driver;
  */
 public class CreateTable extends BaseAction{
 
-    private static final String URL = "jdbc:mysql://localhost:3306/togetherinway?useUnicode=true&characterEncoding=utf-8";
+    private static final String URL = "jdbc:mysql://localhost:3306/togetherinway";
     private static final String LOGIN = "root";
     private static final String PASSWORD = "";
     private static final String FORWARD_SETTINGS = "settings";
@@ -45,7 +45,7 @@ public class CreateTable extends BaseAction{
 
         try {
             connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
-            String send = "CREATE TABLE `driversways`  (\n" +
+            String send = "CREATE TABLE `ways`  (\n" +
                     "\t`id`                \tint(11) NOT NULL,\n" +
                     "\t`startpoint`        \tvarchar(50) NOT NULL,\n" +
                     "\t`finishpoint`       \tvarchar(50) NOT NULL,\n" +
@@ -57,15 +57,15 @@ public class CreateTable extends BaseAction{
                     "\tPRIMARY KEY(`id`)\n" +
                     ")\n" +
                     "AUTO_INCREMENT = 0";
-            ResultSet resultSet = connection.createStatement().executeQuery("SHOW TABLES LIKE 'driversways'");
+            ResultSet resultSet = connection.createStatement().executeQuery("SHOW TABLES LIKE 'ways'");
             if (resultSet != null && resultSet.next()){
-                messageForm.setMessage("Таблица driversways уже существует");
+                messageForm.setMessage("Таблица ways уже существует");
             }else {
                 connection.createStatement().execute(send);
-                messageForm.setMessage("Таблица driversways создана успешно");
+                messageForm.setMessage("Таблица ways создана успешно");
             }
         }catch (SQLException e){
-            messageForm.setMessage("Не удалось создать таблицу driversways\n" + e.getMessage());
+            messageForm.setMessage("Не удалось создать таблицу ways\n" + e.getMessage());
         }
         finally {
             if (cursor != null)
