@@ -14,7 +14,7 @@
                 name="Record"
                 parameter="saveRecords"
                 scope="request">
-            <forward name="successful" path="/jsp/setRoute.jsp"/>
+            <forward name="successful" path="/setRoute.jsp"/>
             <forward name="error" path="/error.jsp"/>
         </action>
         <action path="/getRecords"
@@ -22,16 +22,16 @@
                 name="Records"
                 parameter="getSpecificRecords"
                 scope="request">
-            <forward name="listRecords" path="/jsp/getRoutes.jsp"/>
+            <forward name="listRecords" path="/getRoutes.jsp"/>
             <forward name="error" path="/error.jsp"/>
             <forward name="emptyRecord" path="/emptyList.jsp"/>
         </action>
         <action path="/index"
                 forward="/index.jsp"/>
-        <action path="/driver"
-                forward="/driver.jsp"/>
-        <action path="/passenger"
-                forward="/passenger.jsp"/>
+        <action path="/addRouter"
+                forward="/addRouter.jsp"/>
+        <action path="/findMan"
+                forward="/findMan.jsp"/>
         <action path="/aboutProject"
                 forward="/aboutProject.jsp"/>
         <action path="/agreement"

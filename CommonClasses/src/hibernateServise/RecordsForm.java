@@ -14,14 +14,39 @@ public class RecordsForm extends ActionForm {
 //    Нужно убрать эти поля !
 
     private Integer id;
-    private String from;
-    private String where;
+    private String startpoint;
+    private String finishpoint;
+    private String intermediatepoints;
     private Integer day;
     private Integer month;
-    private String mail;
     private String vkId;
-    private String comment;
+    private String information;
     private String agree;
+    private int who;
+
+    public int getWho() {
+        return who;
+    }
+
+    public void setWho(int who) {
+        this.who = who;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
     public Integer getId() {
         return id;
@@ -31,20 +56,28 @@ public class RecordsForm extends ActionForm {
         this.id = id;
     }
 
-    public String getFrom() {
-        return from;
+    public String getStartpoint() {
+        return startpoint;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setStartpoint(String startpoint) {
+        this.startpoint = startpoint;
     }
 
-    public String getWhere() {
-        return where;
+    public String getFinishpoint() {
+        return finishpoint;
     }
 
-    public void setWhere(String where) {
-        this.where = where;
+    public void setFinishpoint(String finishpoint) {
+        this.finishpoint = finishpoint;
+    }
+
+    public String getIntermediatepoints() {
+        return intermediatepoints;
+    }
+
+    public void setIntermediatepoints(String intermediatepoints) {
+        this.intermediatepoints = intermediatepoints;
     }
 
     public Integer getDay() {
@@ -63,14 +96,6 @@ public class RecordsForm extends ActionForm {
         this.month = month;
     }
 
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
     public String getVkId() {
         return vkId;
     }
@@ -79,12 +104,12 @@ public class RecordsForm extends ActionForm {
         this.vkId = vkId;
     }
 
-    public String getComment() {
-        return comment;
+    public String getInformation() {
+        return information;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setInformation(String information) {
+        this.information = information;
     }
 
     public String getAgree() {
@@ -93,21 +118,5 @@ public class RecordsForm extends ActionForm {
 
     public void setAgree(String agree) {
         this.agree = agree;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 }

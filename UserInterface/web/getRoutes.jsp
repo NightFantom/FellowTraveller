@@ -16,8 +16,8 @@
     </tr>
     <logic:iterate id="user" name="Records" property="users">
         <tr>
-            <td><bean:write name="user" property="from"/></td>
-            <td><bean:write name="user" property="where"/></td>
+            <td><bean:write name="user" property="startpoint"/></td>
+            <td><bean:write name="user" property="finishpoint"/></td>
             <td>
                 <%
                     User userDub = (User) pageContext.getAttribute("user");
@@ -30,7 +30,7 @@
             </td>
             <td><bean:write name="user" property="month" format=""/></td>
             <td><a href="<bean:write name="user" property="vkId"/>"> VK</a></td>
-            <td><bean:write name="user" property="comment"/></td>
+            <td><bean:write name="user" property="information"/></td>
         </tr>
     </logic:iterate>
 </table>

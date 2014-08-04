@@ -9,31 +9,35 @@
     <%@include file="header.jsp" %>
     <script type="text/javascript" src="javaScript/ajax.js"></script>
     <script type="text/javascript" src="javaScript/checkForm.js"></script>
-    <title>Я водитель</title>
+    <title>Добавить маршрут</title>
 </head>
 <body>
 <div id="basis">
     <div id="mainMenu">
         <div id="topRectangle"></div>
         <div id="center">
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a></div>
+            <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a>
+            </div>
             <div class="form">
                 <form>
-                    <p>Водила <input type="radio" name="choose" id="selectPassenger" checked></p>
-                    <p>Пассажир<input type="radio" name="choose" id="selectDriver"></p>
-                    <p>Откуда* <input class="textInput" type="text" name="from" id="from"
-                                     onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                     onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                     onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                     placeholder="Город отправления"
-                                     maxlength="50"> </p>
+                    <p>Я
+                        <input type="radio"  name="who" value="0" checked> <span class="who"> Водитель</span>
+                        <input type="radio"  name="who" value="1"><span class="who"> Пассажир</span>
+                    </p>
 
-                    <p>Куда* <input class="textInput" type="text" name="where" id="where"
-                                   onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                   onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                   onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                   placeholder="Город прибытия"
-                                   maxlength="50"></p>
+                    <p>Откуда* <input class="textInput" type="text" name="startpoint" id="from"
+                                      onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                      onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                      onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                      placeholder="Город отправления"
+                                      maxlength="25"></p>
+
+                    <p>Куда* <input class="textInput" type="text" name="finishpoint" id="where"
+                                    onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                    onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                    onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                    placeholder="Город прибытия"
+                                    maxlength="25"></p>
 
                     <p>Месяц*
                         <select class="date" name="month" id="month"
@@ -96,30 +100,34 @@
                     </p>
 
                     <p>Страница в ВК* <input class="textInput" type="text" name="vkId" id="vkId"
-                                            onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                            onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                            onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
-                                            placeholder="vk.com/..."
-                                            maxlength="100"></p>
+                                             onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                             onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                             onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
+                                             placeholder="vk.com/..."
+                                             maxlength="25"></p>
 
-                    <p>Комментарий <textarea name="comment" id="comment"
+                    <p>Комментарий <textarea name="information" id="comment"
                                              onkeyup="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
                                              onkeypress="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
                                              onchange="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"
                                              placeholder="Ваш комментарий"
                                              maxlength="100"
-                                             onkeydown="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"></textarea></p>
-                    <p id="commentMessage"> </p>
+                                             onkeydown="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"></textarea>
+                    </p>
 
-                  <p class="agreement">
+                    <p id="commentMessage"></p>
 
-                        <input id="agree" type="checkbox" name="agree" onclick="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')"  >
+                    <p class="agreement">
+
+                        <input id="agree" type="checkbox" name="agree"
+                               onclick="checkDriverForm('from','where','date','month','agree','vkId','comment','button','commentMessage')">
                         <a href="${pageContext.request.contextPath}/agreement.do">Принимаю условия соглашения*</a></p>
 
                     <input id="button" type="button" class="textInput" value="Поехали" disabled="disabled"
-                           onclick="postAjax('${pageContext.request.contextPath}/',document.forms[0],'serverAnswer')">
+                           onclick="postAjax('${pageContext.request.contextPath}/save.do',document.forms[0],'serverAnswer')">
                 </form>
                 <p style="font-size: 12pt; color: black;">* - поля обязательные для заполнения</p>
+
                 <div id="serverAnswer"></div>
             </div>
             <%@include file="footer.jsp" %>

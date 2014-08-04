@@ -7,13 +7,13 @@ import org.apache.struts.action.ActionForm;
  * Форма предназначена для передачи сообшений о выполнении каких-либо действий в настройках
  */
 public class MessageForm extends ActionForm {
-    private String message;
+    private String message = "";
 
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.message = this.message + " " +message + "\n";
     }
 }

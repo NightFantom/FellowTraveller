@@ -9,14 +9,23 @@ import org.apache.struts.action.ActionForm;
 
 public class User extends ActionForm {
     private Integer id;
-    private String from;
-    private String where;
+    private String startpoint;
+    private String finishpoint;
+    private String intermediatepoints;
     private Integer day;
     private Integer month;
-    private String mail;
     private String vkId;
-    private String comment;
+    private String information;
     private String agree;
+    private Integer who;
+
+    public Integer getWho() {
+        return who;
+    }
+
+    public void setWho(Integer who) {
+        this.who = who;
+    }
 
     public String getAgree() {
         return agree;
@@ -54,48 +63,48 @@ public class User extends ActionForm {
      *
      * @return Откуда
      */
-    public String getFrom() {
-        return from;
+    public String getStartpoint() {
+        return startpoint;
     }
 
     /**
      *
      * @param from Откуда
      */
-    public void setFrom(String from) {
-        this.from = from;
+    public void setStartpoint(String from) {
+        this.startpoint = from;
     }
 
     /**
      *
      * @return Куда
      */
-    public String getWhere() {
-        return where;
+    public String getFinishpoint() {
+        return finishpoint;
     }
 
     /**
      *
      * @param where Куда
      */
-    public void setWhere(String where) {
-        this.where = where;
+    public void setFinishpoint(String where) {
+        this.finishpoint = where;
     }
 
     /**
      *
      * @return Почта
      */
-    public String getMail() {
-        return mail;
+    public String getIntermediatepoints() {
+        return intermediatepoints;
     }
 
     /**
      *
      * @param mail Почта
      */
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setIntermediatepoints(String mail) {
+        this.intermediatepoints = mail;
     }
 
     /**
@@ -118,15 +127,15 @@ public class User extends ActionForm {
      *
      * @return Комментарий
      */
-    public String getComment() {
-        return comment;
+    public String getInformation() {
+        return information;
     }
 
     /**
      *
      * @param comment Комментарий
      */
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setInformation(String comment) {
+        this.information = comment;
     }
 }

@@ -22,19 +22,23 @@
             <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a></div>
             <div class="form">
                 <form>
-                    <p>Откуда* <input id="from" class="textInput" type="text" name="from"
-                                     onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
-                                     onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
-                                     onchange="checkPassengerForm('from','where','date','month','agree','button')"
-                                     placeholder="Город отправления"
-                                     maxlength="25"> </p>
+                    <p>Ищу
+                        <input type="radio"  name="who" value="0" checked> <span class="who"> Водителя</span>
+                        <input type="radio"  name="who" value="1"><span class="who"> Пассажира</span>
+                    </p>
+                    <p>Откуда* <input id="from" class="textInput" type="text" name="startpoint"
+                                      onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
+                                      onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
+                                      onchange="checkPassengerForm('from','where','date','month','agree','button')"
+                                      placeholder="Город отправления"
+                                      maxlength="25"> </p>
 
-                    <p>Куда* <input id="where" class="textInput" type="text" name="where"
-                                   onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
-                                   onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
-                                   onchange="checkPassengerForm('from','where','date','month','agree','button')"
-                                   placeholder="Город прибытия"
-                                   maxlength="25"></p>
+                    <p>Куда* <input id="where" class="textInput" type="text" name="finishpoint"
+                                    onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
+                                    onkeypress="checkPassengerForm('from','where','date','month','agree','button')"
+                                    onchange="checkPassengerForm('from','where','date','month','agree','button')"
+                                    placeholder="Город прибытия"
+                                    maxlength="25"></p>
                     <p>Месяц*
                         <select class="date" name="month" id="month"
                                 onkeyup="checkPassengerForm('from','where','date','month','agree','button')"
@@ -105,4 +109,4 @@
                 <p style="font-size: 12pt; color: black;">* - поля обязательные для заполнения</p>
                 <div id="serverAnswer" onchange="check()"></div>
             </div>
-<%@include file="footer.jsp" %>
+            <%@include file="footer.jsp" %>
