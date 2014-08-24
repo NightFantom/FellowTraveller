@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
     <title>Поиск попутчиков</title>
 </head>
 <body>
@@ -13,4 +13,4 @@
             <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a></div>
             <div class="menuBlock"><a href="${pageContext.request.contextPath}/addRouter.do"><img src="images/addRouter.png"></a></div>
             <div class="menuBlock"><a href="${pageContext.request.contextPath}/findMan.do"><img src="images/findMan.png"></a></div>
-<%@include file="footer.jsp" %>
+<%@include file="jsp/footer.jsp" %>

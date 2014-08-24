@@ -23,12 +23,13 @@ function createXMLHttp() {
 }
 
 /**
- * фукнция автоматической упаковки формы любой сложности
+ * фукнция автоматической упаковки формы
  * @param oForm
  * @returns {string}
  */
 function getRequestBody(oForm) {
     var aParams = new Array();
+    var bufString =  "";
     for (var i = 0; i < oForm.elements.length; i++) {
         var sParam;
         if(oForm.elements[i].type == "radio"){
@@ -38,12 +39,24 @@ function getRequestBody(oForm) {
                 sParam += encodeURIComponent(oForm.elements[i].value);
                 aParams.push(sParam);
             }
+        }else if(encodeURIComponent(oForm.elements[i].name)=="intermediate"){
+            if(bufString ==""){
+                bufString += oForm.elements[i].value;
+            }else{
+                bufString += ',' + oForm.elements[i].value;
+            }
         }else{
             sParam = encodeURIComponent(oForm.elements[i].name);
             sParam += "=";
             sParam += encodeURIComponent(oForm.elements[i].value);
             aParams.push(sParam);
         }
+    }
+    if(bufString !=""){
+        sParam = "intermediate" ;
+        sParam += "=";
+        sParam += bufString;
+        aParams.push(sParam);
     }
     return aParams.join("&");
 }
@@ -79,14 +92,6 @@ function postAjax(url, oForm, id) {
     var oXmlHttp = createXMLHttp();
     var sBody = getRequestBody(oForm);
     document.getElementById(id).innerHTML = '<img src="images/ajaxloaderblack.gif" >';
-//    if (oForm.elements[0].checked) {  //выбран водила
-//        url += 'save.do';
-//    } else if (oForm.elements[1].checked) { //выбран пассажир
-//        url += 'getRecords.do';
-//    }
-//    while(){
-//        if (oForm.elements[0].type == "radio" && oForm.elements[0])
-//    }
     oXmlHttp.open("POST", url, true);
     oXmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     oXmlHttp.onreadystatechange = function () {
@@ -97,7 +102,5 @@ function postAjax(url, oForm, id) {
             document.getElementById(id).innerHTML = "ajax error";
         }
     };
-    //document.forms[i];
     oXmlHttp.send(sBody);
 }
-//oForm.elements[i].name

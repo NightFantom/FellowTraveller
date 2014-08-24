@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
     <title>Условия соглашения</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
     <div id="mainMenu">
         <div id="topRectangle"></div>
         <div id="center">
-            <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="images/logo.png"></a></div>
+            <div class="menuBlock"><a href="${pageContext.request.contextPath}/index.do"><img src="../images/logo.png"></a></div>
             <div class="documentation">
                 <ol>
                     <li>Мы не несём никакой ответственности за действия пассажиров или водителей.</li>

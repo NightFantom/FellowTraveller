@@ -14,28 +14,28 @@
                 name="Record"
                 parameter="saveRecords"
                 scope="request">
-            <forward name="successful" path="/setRoute.jsp"/>
-            <forward name="error" path="/error.jsp"/>
+            <forward name="successful" path="/jsp/setRoute.jsp"/>
+            <forward name="error" path="/jsp/error.jsp"/>
         </action>
         <action path="/getRecords"
                 type="records.DispatchRecords"
                 name="Records"
                 parameter="getSpecificRecords"
                 scope="request">
-            <forward name="listRecords" path="/getRoutes.jsp"/>
-            <forward name="error" path="/error.jsp"/>
-            <forward name="emptyRecord" path="/emptyList.jsp"/>
+            <forward name="listRecords" path="/jsp/getRoutes.jsp"/>
+            <forward name="error" path="/jsp/error.jsp"/>
+            <forward name="emptyRecord" path="/jsp/emptyList.jsp"/>
         </action>
         <action path="/index"
                 forward="/index.jsp"/>
         <action path="/addRouter"
-                forward="/addRouter.jsp"/>
+                forward="/jsp/addRouter.jsp"/>
         <action path="/findMan"
-                forward="/findMan.jsp"/>
+                forward="/jsp/findMan.jsp"/>
         <action path="/aboutProject"
-                forward="/aboutProject.jsp"/>
+                forward="/jsp/aboutProject.jsp"/>
         <action path="/agreement"
-                forward="/agreement.jsp"/>
+                forward="/jsp/agreement.jsp"/>
     </action-mappings>
     <plug-in className="hibernateServise.HibernatePlugin"/>
 </struts-config>

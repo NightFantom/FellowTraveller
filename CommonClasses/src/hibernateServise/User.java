@@ -2,6 +2,8 @@ package hibernateServise;
 
 import org.apache.struts.action.ActionForm;
 
+import javax.persistence.Entity;
+
 /**
  * Created by Денис on 03.05.2014.
  * Форма пользователя
@@ -18,7 +20,7 @@ public class User extends ActionForm {
     private String information;
     private String agree;
     private Integer who;
-
+   
     public Integer getWho() {
         return who;
     }
