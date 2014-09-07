@@ -37,6 +37,7 @@ public class DispatchRecords extends DispatchAction {
      * @throws Exception
      */
     public ActionForward delete(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HibernateUtil.init(servlet);
         RecordsForm routesForm = (RecordsForm) form;
         User user = new User();
         user.setId(routesForm.getId());
@@ -72,7 +73,7 @@ public class DispatchRecords extends DispatchAction {
      * @throws Exception
      */
     public ActionForward allRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+        HibernateUtil.init(servlet);
         RecordsForm routesForm = (RecordsForm) form;
         Transaction transaction = null;
         Session session = null;
@@ -106,6 +107,7 @@ public class DispatchRecords extends DispatchAction {
      * @throws Exception
      */
     public ActionForward saveRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HibernateUtil.init(servlet);
         User user = (User) form;
         user.setIntermediatepoints("");
         if (user != null) {
@@ -145,6 +147,7 @@ public class DispatchRecords extends DispatchAction {
      * @throws Exception
      */
     public ActionForward getSpecificRecords(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HibernateUtil.init(servlet);
         RecordsForm routesForm = (RecordsForm) form;
         User user = new User();
         user.setStartpoint(routesForm.getStartpoint());

@@ -12,19 +12,21 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import javax.servlet.ServletException;
+import java.util.Date;
 
 /**
  * Created by Денис on 24.05.14.
  */
 public class HibernatePlugin implements PlugIn {
-    private SessionFactory sessionFactory;
+    public static SessionFactory sessionFactory;
     private static Class clazz = HibernatePlugin.class;
     public static final String KEY_NAME = clazz.getName();
-
-
+    public static long timer = 0;
 
     @Override
     public void init(ActionServlet servlet, ModuleConfig config) throws ServletException {
+        Date dt = new Date();
+        timer = dt.getTime();
         Configuration configuration = new Configuration().configure("hibernateServise/hibernate.cfg.xml");
         final ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         configuration.setSessionFactoryObserver(new SessionFactoryObserver() {
